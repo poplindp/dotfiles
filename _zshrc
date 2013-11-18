@@ -48,3 +48,4 @@ source $ZSH/oh-my-zsh.sh
 
 set -o vi
 
+# aca van los exports
