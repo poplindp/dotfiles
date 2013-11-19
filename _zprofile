@@ -1,1 +1,11 @@
+# Check and run xcape
+if [ "$(pidof xcape)" ] 
+then
+	# process was found
+else
+	# process not found
+	xcape
+fi
+
+
 xmodmap ${HOME}/.Xmodmap
