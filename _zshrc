@@ -5,7 +5,8 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
+ZSH_THEME="bunsen"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -40,15 +41,85 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git battery autoenv colorize history python themes vi-mode yum)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
-set -o vi
+setopt AUTO_CD
+export EDITOR="vim"
+bindkey -v 
+
+# vi style incremental search
+bindkey '^R' history-incremental-search-backward
+bindkey '^S' history-incremental-search-forward
+bindkey '^P' history-search-backward
+bindkey '^N' history-search-forward  
+
+
+## do this or create .zprofile or .zlogin (http://zsh.sourceforge.net/Guide/zshguide02.html)
+#if [[ -o login ]]
+#then
+#	xmodmap ${HOME}/.Xmodmap
+#else
+#	#do this and that
+#fi
+
+
 
 # aca van los exports
+
+#export PATH=$PATH:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/games
 PATH=${HOME}/usr/bin:/usr/local/bin:${PATH}
+
+
+#### for programs installed in ${HOME}/usr and lib64
+#export PATH=${HOME}/usr/bin:/usr/lib64/openmpi/bin:${PATH}
+#export LD_LIBRARY_PATH=/usr/lib64/openmpi/lib:/usr/lib64:/usr/lib:${LD_LIBRARY_PATH}
+#
+#### ASE (manual installation)
+#export PATH=${HOME}/usr/src/python-ase/tools:${PATH}
+#export PYTHONPATH=${HOME}/usr/src/python-ase:${PYTHONPATH}
+#
+#### GPAW (developper installation)
+#export GPAW_HOME=${HOME}/usr/src/gpaw
+#export GPAW_PLATFORM=`python -c "from distutils import util, sysconfig; print util.get_platform()+'-'+sysconfig.get_python_version()"`
+#export PYTHONPATH=${GPAW_HOME}:${PYTHONPATH}
+#export PYTHONPATH=${GPAW_HOME}/build/lib.${GPAW_PLATFORM}:${PYTHONPATH}
+#export PATH=${GPAW_HOME}/build/bin.${GPAW_PLATFORM}:${GPAW_HOME}/tools:${PATH}
+#export GPAW_SETUP_PATH=${HOME}/usr/src/gpaw-setups
+###export GPAW_PYTHON=/usr/bin
+#
+#### ASAP
+#export ASAP_HOME=${HOME}/usr/src/Asap
+#export PATH=${ASAP_HOME}/x86_64:${PATH}
+#export PYTHONPATH=${ASAP_HOME}/Python:${ASAP_HOME}/x86_64:${PYTHONPATH}
+#
+#
+#### CULGI
+#CULGI_PATH=${HOME}/usr/Culgi
+#export CULGI_INSTALL_DIR=${CULGI_PATH}/share/Culgi
+#export PATH=${CULGI_PATH}/bin:$PATH
+#export PYTHONPATH=${CULGI_PATH}/lib/python2.7/site-packages:${PYTHONPATH}
+#export LD_LIBRARY_PATH=${CULGI_PATH}/lib64:${LD_LIBRARY_PATH}
+#
+#### ABINIT
+#export ASE_ABINIT_COMMAND="mpirun -np 6 ${HOME}/usr/abinit/bin/abinit-mpi < PREFIX.files > PREFIX.log"
+#PP=${HOME}/usr/src/abinit-pseudopotentials-2
+#export ABINIT_PP_PATH=$PP/LDA_FHI
+#export ABINIT_PP_PATH=$PP/GGA_FHI:$ABINIT_PP_PATH
+#export ABINIT_PP_PATH=$PP/LDA_HGH:$ABINIT_PP_PATH
+#export ABINIT_PP_PATH=$PP/LDA_PAW:$ABINIT_PP_PATH
+#export ABINIT_PP_PATH=$PP/LDA_TM:$ABINIT_PP_PATH
+#export ABINIT_PP_PATH=$PP/GGA_FHI:$ABINIT_PP_PATH
+#export ABINIT_PP_PATH=$PP/GGA_HGHK:$ABINIT_PP_PATH
+#
+#### HOTBIT
+#export HOTBIT_DIR="${HOME}/usr/hotbit/lib64/python" #the name "lib64" can vary
+#export PATH="${HOME}/usr/hotbit:$PATH"
+#export HOTBIT_PARAMETERS="${HOME}/usr/hotbit/param"
+#export PYTHONPATH="$PYTHONPATH:$HOTBIT_DIR"
+#
 
 export PATH
