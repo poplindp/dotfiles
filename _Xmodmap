@@ -1,8 +1,22 @@
-clear lock
-remove Control = Control_L
-add Control = Control_L
+! This is the cleanest version
+!   xmodmap -pm gives the mapping
+!
 
-!!! OLD.  Gives errors "bad keysym in..."
+clear lock
+remove control = Control_L
+
+keycode 0x42 = Control_L
+! dont do the sym, just map into Contro_L
+!keysym Caps_Lock = Control_L
+!
+add control = Control_L
+
+
+
+!!! OLD.  Gives errors "bad keysym in..." since once Caps_Lock is removed
+!!!       there is no more definition for it!.  Using the code (0x42) for
+!!!       caps_locks make the trick
+!
 !remove Lock = Caps_Lock
 !remove Control = Control_L
 !keysym Caps_Lock = Control_L
