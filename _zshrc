@@ -49,3 +49,6 @@ source $ZSH/oh-my-zsh.sh
 set -o vi
 
 # aca van los exports
+PATH=${HOME}/usr/bin:/usr/local/bin:${PATH}
+
+export PATH
