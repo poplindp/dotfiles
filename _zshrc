@@ -78,8 +78,8 @@ PATH=${HOME}/usr/bin:/usr/local/bin:${PATH}
 #export LD_LIBRARY_PATH=/usr/lib64/openmpi/lib:/usr/lib64:/usr/lib:${LD_LIBRARY_PATH}
 #
 #### ASE (manual installation)
-#export PATH=${HOME}/usr/src/python-ase/tools:${PATH}
-#export PYTHONPATH=${HOME}/usr/src/python-ase:${PYTHONPATH}
+PATH=${HOME}/usr/src/python-ase/tools:${PATH}
+PYTHONPATH=${HOME}/usr/src/python-ase:${PYTHONPATH}
 #
 #### GPAW (developper installation)
 #export GPAW_HOME=${HOME}/usr/src/gpaw
@@ -122,3 +122,4 @@ PATH=${HOME}/usr/bin:/usr/local/bin:${PATH}
 #
 
 export PATH
+export PYTHONPATH
