@@ -16,9 +16,10 @@ Bundle 'gmarik/vundle'
 "
 " original repos on GitHub
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-sensible'
 "Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'altercation/vim-colors-solarized'
 Bundle "MarcWeber/vim-addon-mw-utils"
@@ -26,6 +27,12 @@ Bundle "tomtom/tlib_vim"
 Bundle "garbas/vim-snipmate"
 Bundle "honza/vim-snippets"
 Bundle 'vim-scripts/Gundo'
+Bundle 'fs111/pydoc.vim'
+Bundle 'Shougo/unite.vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'ervandew/supertab'
+Bundle 'nvie/vim-flake8'
+"Bundle 'Townk/vim-autoclose'
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'matchit.zip'
