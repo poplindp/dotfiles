@@ -71,25 +71,26 @@ bindkey '^N' history-search-forward
 
 #export PATH=$PATH:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/games
 PATH=${HOME}/usr/bin:/usr/local/bin:${PATH}
+PYTHONPATH=/usr/lib64/python2.7/site-packages:${PYTHONPATH}
+LD_LIBRARY_PATH=${HOME}/usr/lib:${LD_LIBRARY_PATH}
 
 
 #### for programs installed in ${HOME}/usr and lib64
 #export PATH=${HOME}/usr/bin:/usr/lib64/openmpi/bin:${PATH}
 #export LD_LIBRARY_PATH=/usr/lib64/openmpi/lib:/usr/lib64:/usr/lib:${LD_LIBRARY_PATH}
-#
+
 #### ASE (manual installation)
 PATH=${HOME}/usr/src/python-ase/tools:${PATH}
 PYTHONPATH=${HOME}/usr/src/python-ase:${PYTHONPATH}
-#
+
 #### GPAW (developper installation)
-#export GPAW_HOME=${HOME}/usr/src/gpaw
-#export GPAW_PLATFORM=`python -c "from distutils import util, sysconfig; print util.get_platform()+'-'+sysconfig.get_python_version()"`
-#export PYTHONPATH=${GPAW_HOME}:${PYTHONPATH}
-#export PYTHONPATH=${GPAW_HOME}/build/lib.${GPAW_PLATFORM}:${PYTHONPATH}
-#export PATH=${GPAW_HOME}/build/bin.${GPAW_PLATFORM}:${GPAW_HOME}/tools:${PATH}
-#export GPAW_SETUP_PATH=${HOME}/usr/src/gpaw-setups
-###export GPAW_PYTHON=/usr/bin
-#
+export GPAW_HOME=${HOME}/usr/src/gpaw
+export GPAW_PLATFORM=`python2 -c "from distutils import util, sysconfig; print util.get_platform()+'-'+sysconfig.get_python_version()"`
+PATH=${GPAW_HOME}/build/bin.${GPAW_PLATFORM}:${GPAW_HOME}/tools:${PATH}
+PYTHONPATH=${GPAW_HOME}/build/lib.${GPAW_PLATFORM}:${GPAW_HOME}:${PYTHONPATH}
+export GPAW_SETUP_PATH=${HOME}/usr/src/gpaw-setups
+#export GPAW_PYTHON=/usr/bin
+
 #### ASAP
 #export ASAP_HOME=${HOME}/usr/src/Asap
 #export PATH=${ASAP_HOME}/x86_64:${PATH}
@@ -104,15 +105,15 @@ PYTHONPATH=${HOME}/usr/src/python-ase:${PYTHONPATH}
 #export LD_LIBRARY_PATH=${CULGI_PATH}/lib64:${LD_LIBRARY_PATH}
 #
 #### ABINIT
-#export ASE_ABINIT_COMMAND="mpirun -np 6 ${HOME}/usr/abinit/bin/abinit-mpi < PREFIX.files > PREFIX.log"
-#PP=${HOME}/usr/src/abinit-pseudopotentials-2
-#export ABINIT_PP_PATH=$PP/LDA_FHI
-#export ABINIT_PP_PATH=$PP/GGA_FHI:$ABINIT_PP_PATH
-#export ABINIT_PP_PATH=$PP/LDA_HGH:$ABINIT_PP_PATH
-#export ABINIT_PP_PATH=$PP/LDA_PAW:$ABINIT_PP_PATH
-#export ABINIT_PP_PATH=$PP/LDA_TM:$ABINIT_PP_PATH
-#export ABINIT_PP_PATH=$PP/GGA_FHI:$ABINIT_PP_PATH
-#export ABINIT_PP_PATH=$PP/GGA_HGHK:$ABINIT_PP_PATH
+export ASE_ABINIT_COMMAND="mpirun -np 6 ${HOME}/usr/abinit/bin/abinit-mpi < PREFIX.files > PREFIX.log"
+PP=${HOME}/usr/src/abinit-pseudopotentials-2
+export ABINIT_PP_PATH=$PP/LDA_FHI
+export ABINIT_PP_PATH=$PP/GGA_FHI:$ABINIT_PP_PATH
+export ABINIT_PP_PATH=$PP/LDA_HGH:$ABINIT_PP_PATH
+export ABINIT_PP_PATH=$PP/LDA_PAW:$ABINIT_PP_PATH
+export ABINIT_PP_PATH=$PP/LDA_TM:$ABINIT_PP_PATH
+export ABINIT_PP_PATH=$PP/GGA_FHI:$ABINIT_PP_PATH
+export ABINIT_PP_PATH=$PP/GGA_HGHK:$ABINIT_PP_PATH
 #
 #### HOTBIT
 #export HOTBIT_DIR="${HOME}/usr/hotbit/lib64/python" #the name "lib64" can vary
