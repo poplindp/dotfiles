@@ -69,15 +69,15 @@ bindkey '^N' history-search-forward
 
 # aca van los exports
 
-#export PATH=$PATH:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/games
 PATH=${HOME}/usr/bin:/usr/local/bin:${PATH}
 PYTHONPATH=/usr/lib64/python2.7/site-packages:${PYTHONPATH}
 LD_LIBRARY_PATH=${HOME}/usr/lib:${LD_LIBRARY_PATH}
 
 
-#### for programs installed in ${HOME}/usr and lib64
+#### for programs installed in ${HOME}/usr... and lib64
 #export PATH=${HOME}/usr/bin:/usr/lib64/openmpi/bin:${PATH}
 #export LD_LIBRARY_PATH=/usr/lib64/openmpi/lib:/usr/lib64:/usr/lib:${LD_LIBRARY_PATH}
+LD_LIBRARY_PATH=${HOME}/usr/xc/lib:${LD_LIBRARY_PATH}
 
 #### ASE (manual installation)
 PATH=${HOME}/usr/src/python-ase/tools:${PATH}
@@ -121,6 +121,11 @@ export ABINIT_PP_PATH=$PP/GGA_HGHK:$ABINIT_PP_PATH
 #export HOTBIT_PARAMETERS="${HOME}/usr/hotbit/param"
 #export PYTHONPATH="$PYTHONPATH:$HOTBIT_DIR"
 #
+#export PATH=$PATH:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/games
+
+### LAMMPS
+export LAMMPS_COMMAND="mpirun --np 4 ${HOME}/usr/src/lammps/src/lmp_archlinux"
 
 export PATH
 export PYTHONPATH
+export LD_LIBRARY_PATH

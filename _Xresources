@@ -1,3 +1,14 @@
+!
+! Xresources file
+! if pink window is obtained is a problem reading this file
+! likely -nopp option is active in xinitrc
+!
+! use xrdb ~/.Xdefaults to solve it
+! same comand should be executed in a local xinitrd or zlogin or so...
+!
+!
+
+
 URxvt.intensityStyles: False
 !URxvt.font: xft:DejaVu Sans Mono:pixelsize=14
 
