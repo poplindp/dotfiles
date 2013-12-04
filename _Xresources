@@ -104,7 +104,9 @@ URxvt.matcher.button: 1
 *color15:                 S_base3
 
 
-
+!! for xterm
+XTerm*customization: -color
+XTerm*termName: xterm-256color
 
 
 !!!!!!!!!!!!!!!  from manual help
@@ -377,5 +379,6 @@ URxvt.matcher.button: 1
 
 ! Turn on/off ISO 14755 5.2 mode (default enabled).
 ! URxvt*iso14755_52: boolean
+
 
 
