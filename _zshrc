@@ -98,11 +98,11 @@ export PYTHONPATH=${ASAP_HOME}/Python:${ASAP_HOME}/x86_64:${PYTHONPATH}
 #
 #
 #### CULGI
-#CULGI_PATH=${HOME}/usr/Culgi
-#export CULGI_INSTALL_DIR=${CULGI_PATH}/share/Culgi
-#export PATH=${CULGI_PATH}/bin:$PATH
-#export PYTHONPATH=${CULGI_PATH}/lib/python2.7/site-packages:${PYTHONPATH}
-#export LD_LIBRARY_PATH=${CULGI_PATH}/lib64:${LD_LIBRARY_PATH}
+CULGI_PATH=${HOME}/usr/Culgi
+export CULGI_INSTALL_DIR=${CULGI_PATH}/share/Culgi
+export PATH=${CULGI_PATH}/bin:$PATH
+export PYTHONPATH=${CULGI_PATH}/lib/python2.6/site-packages:${PYTHONPATH}
+export LD_LIBRARY_PATH=${CULGI_PATH}/lib64:${LD_LIBRARY_PATH}
 #
 #### ABINIT
 export ASE_ABINIT_COMMAND="mpirun -np 6 ${HOME}/usr/abinit/bin/abinit-mpi < PREFIX.files > PREFIX.log"
