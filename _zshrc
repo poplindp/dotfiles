@@ -46,6 +46,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
+# ls *(<tab>  for options
+setopt extendedglob
+
 setopt AUTO_CD
 export EDITOR="vim"
 bindkey -v 
