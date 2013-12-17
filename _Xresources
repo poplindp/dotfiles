@@ -12,10 +12,6 @@
 URxvt.intensityStyles: False
 !URxvt.font: xft:DejaVu Sans Mono:pixelsize=14
 
-!Transparency
-!URxvt.depth: 32
-!URxvt.background: [95]#000000
-
 URxvt*buffered: true
 URxvt*cursorBlink: true
 URxvt*underlineColor: yellow
@@ -51,7 +47,7 @@ URxvt.matcher.button: 1
 
 ! Dark
 
-#define S_base03        #002b36
+#define S_base03        [95]#002b36
 #define S_base02        #073642
 #define S_base01        #586e75
 #define S_base00        #657b83
@@ -107,6 +103,7 @@ URxvt.matcher.button: 1
 !! for xterm
 XTerm*customization: -color
 XTerm*termName: xterm-256color
+XTerm*font:  xft:inconsolata:size=12:antialias=true
 
 
 !!!!!!!!!!!!!!!  from manual help
