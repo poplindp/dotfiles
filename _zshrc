@@ -84,8 +84,9 @@ LD_LIBRARY_PATH=${HOME}/usr/lib:${LD_LIBRARY_PATH}
 LD_LIBRARY_PATH=${HOME}/usr/xc/lib:${LD_LIBRARY_PATH}
 
 #### ASE (manual installation)
-PATH=${HOME}/usr/src/python-ase/tools:${PATH}
-PYTHONPATH=${HOME}/usr/src/python-ase:${PYTHONPATH}
+#PATH=${HOME}/usr/src/python-ase/tools:${PATH}
+#PYTHONPATH=${HOME}/usr/src/python-ase:${PYTHONPATH}
+PATH=${HOME}/.local/bin:${PATH}
 
 #### GPAW (developper installation)
 export GPAW_HOME=${HOME}/usr/src/gpaw
