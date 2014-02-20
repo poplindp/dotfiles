@@ -10,6 +10,8 @@ do
 		echo "Skipping existant ${HOME}/.${dotfile##_}"
 	fi
 done
+#
+if [ ! -L ${HOME}/.ssh/config ]; then ln -s ${PWD}/c_ssh_config ${HOME}/.ssh/config; fi
 
 #ln -s {${PWD}/_,${HOME}/.}Xresources
 #ln -s {${PWD}/_,${HOME}/.}vimrc

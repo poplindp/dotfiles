@@ -1,0 +1,86 @@
+Host *
+    # Avoid freezing
+    ServerAliveInterval 30
+    ServerAliveCountMax 5
+    ForwardAgent yes
+    ControlMaster auto
+    ControlPersist yes
+    ControlPath ~/.ssh/socket-%r@%h:%p
+    Compression yes
+    AddressFamily inet
+    ServerAliveInterval 120
+
+Host nuits_r johannes_r
+    Hostname spqr.hopto.org
+    Port 15000
+    User diego
+    
+Host=spqr_r
+    Hostname spqr.hd.free.fr
+#    Hostname spqr.dyndns.tv 
+#    Hostname spqr.hopto.org
+    Port 11111
+    User diego
+    #ProxyCommand=ssh psmn nc spqr.dyndns.tv 11111
+
+Host=sgi_r
+    Hostname 195.101.0.132
+    User diego
+    ProxyCommand=ssh spqr_r nc %h %p 2>/dev/null
+
+# ENS-Lyon General
+Host=sshProxy_Lyon
+    Hostname=ssh.ens-lyon.fr
+    User=dpantano
+
+Host=muse
+    User=dpantano
+    ProxyCommand=ssh sshProxy_Lyon nc 140.77.2.212 22
+    #ProxyCommand=ssh sshProxy_Lyon nc 140.77.2.163 22
+
+Host=duo
+    User=dpantano
+    ProxyCommand=ssh sshProxy_Lyon nc 140.77.2.89  22
+
+Host=commander
+    User=dpantano
+    ProxyCommand=ssh sshProxy_Lyon nc 140.77.2.121  22
+
+Host=fugue
+    User=dpantano
+    ProxyCommand=ssh sshProxy_Lyon nc 140.77.2.112  22
+
+# should work with this in psmn (https://www.psmn.ens-lyon.fr/tikiwiki4/tiki-index.php?page=ssh+depuis+exterieur+ENS&bl=y)  but I do it directly with ssh-lyon.
+## PSMN
+#Host=sshProxy_PSMN
+#Hostname=ssh.psmn.ens-lyon.fr
+#User=dpantano
+#
+Host=psmn
+    User=dpantano
+    ProxyCommand=ssh sshProxy_Lyon nc allo-psmn.ens-lyon.fr 22
+
+Host=dell_2
+    User=dpantano
+    ProxyCommand=ssh psmn nc r410comp2-pub 22
+
+Host=master1
+    User=a0h02405
+#    User=accelrys
+
+Host=sgi
+    Hostname=10.38.111.47
+    User=diego
+#    User=accelrys
+
+
+Host=jade
+    User=dpantano
+    Hostname=jade.cines.fr
+    AddressFamily inet
+    Compression yes
+    ControlMaster auto
+    ControlPersist yes
+    ControlPath ~/.ssh/socket-%r@%h:%p
+
+
