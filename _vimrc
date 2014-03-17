@@ -77,5 +77,7 @@ function! ToggleSpell()
 	echo "spell checking language:" g:myLangList[b:myLang]
 endfunction
 
-nmap <silent> <F7> :call ToggleSpell()<CR>
+nmap <silent> <F6> :call ToggleSpell()<CR>
+map <F7> :tabp<Enter>
+map <F8> :tabn<Enter>
 

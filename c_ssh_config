@@ -23,6 +23,14 @@ Host=spqr_r
     User diego
     #ProxyCommand=ssh psmn nc spqr.dyndns.tv 11111
 
+Host=spqr_tunnel
+    Hostname spqr.hd.free.fr
+    Port 11111
+    User diego
+    LocalForward 2222 195.101.0.132:22
+    ControlPersist no
+    #ProxyCommand=ssh psmn nc spqr.dyndns.tv 11111
+
 Host=sgi_r
     Hostname 195.101.0.132
     User diego
