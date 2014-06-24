@@ -77,7 +77,11 @@ function! ToggleSpell()
 	echo "spell checking language:" g:myLangList[b:myLang]
 endfunction
 
+set number
+
 nmap <silent> <F6> :call ToggleSpell()<CR>
 map <F7> :tabp<Enter>
 map <F8> :tabn<Enter>
+
+autocmd FileType python nnoremap <buffer> <F9> :exec '!python2' shellescape(@%, 1)<cr>
 

@@ -70,10 +70,27 @@ bindkey '^N' history-search-forward
 #fi
 
 
+## MODULES
+# source this (work around for DISPLAY problem
+source /etc/profile.d/modules.XXsh
+
+#case "$0" in
+#          -sh|sh|*/sh)	modules_shell=sh ;;
+#       -ksh|ksh|*/ksh)	modules_shell=ksh ;;
+#       -zsh|zsh|*/zsh)	modules_shell=zsh ;;
+#    -bash|bash|*/bash)	modules_shell=bash ;;
+#esac
+#module() { eval `/usr/local/Modules/$MODULE_VERSION/bin/modulecmd $modules_shell $*`; }
+##module() { eval `/bin/modulecmd $modules_shell $*`; }
+module() { eval `/usr/local/Modules/$MODULE_VERSION/bin/modulecmd zsh $*`; }
+
+# Load necessary modules
+module load use.own
+
 
 # aca van los exports
 
-PATH=${HOME}/usr/bin:/usr/local/bin:${PATH}
+PATH=${HOME}/bin:${HOME}/usr/bin:/usr/local/bin:${PATH}
 PYTHONPATH=/usr/lib64/python2.7/site-packages:${PYTHONPATH}
 LD_LIBRARY_PATH=${HOME}/usr/lib:${LD_LIBRARY_PATH}
 
@@ -103,11 +120,22 @@ export PYTHONPATH=${ASAP_HOME}/Python:${ASAP_HOME}/x86_64:${PYTHONPATH}
 #
 #
 #### CULGI
-CULGI_PATH=/usr
+CULGI_PATH=/home/diego/local
 export CULGI_INSTALL_DIR=${CULGI_PATH}/share/Culgi
 export PATH=${CULGI_PATH}/bin:$PATH
-export PYTHONPATH=${CULGI_PATH}/lib/python2.6/site-packages:${PYTHONPATH}
+export PYTHONPATH=${CULGI_PATH}/lib/python2.7/site-packages:${PYTHONPATH}
 export LD_LIBRARY_PATH=${CULGI_PATH}/lib64:${LD_LIBRARY_PATH}
+
+
+# THESE VARS I DEFINED IN ~/bin/CulgiGPE_babel
+
+## for OpenBabel to work  (using rpmextract.sh OpenBabelForCulgi-2.3.2-el6.x86_64.rpm)
+#OPENBABEL_PREFIX_INSTALL=/home/diego/usr/CulgiBabel/usr
+#export LD_LIBRARY_PATH=${OPENBABEL_PREFIX_INSTALL}/lib64/:${LD_LIBRARY_PATH}
+#export BABEL_LIBDIR=${OPENBABEL_PREFIX_INSTALL}/lib64//openbabel/2.3.2/
+#export BABEL_DATADIR=${OPENBABEL_PREFIX_INSTALL}/share/openbabel/2.3.2/
+#export PATH=${OPENBABEL_PREFIX_INSTALL}/bin/:${PATH}
+#
 #
 ##### ABINIT
 #export ASE_ABINIT_COMMAND="mpirun -np 6 ${HOME}/usr/abinit/bin/abinit-mpi < PREFIX.files > PREFIX.log"

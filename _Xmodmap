@@ -6,6 +6,7 @@ clear lock
 remove control = Control_L
 
 keycode 0x42 = Control_L
+!keycode 0x42 = Caps_Lock
 
 !maps CapsLock to ScrollLock just in case!
 keycode 78=Caps_Lock
