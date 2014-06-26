@@ -1,47 +1,71 @@
 execute pathogen#infect()
 syntax on
-set nocompatible                                           
 
 "Vundle
+set nocompatible              " be iMproved, required
 filetype off                  " required!
 
+" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
 " let Vundle manage Vundle
 " " required! 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " My bundles here:
 "
 " original repos on GitHub
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-sensible'
-"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'altercation/vim-colors-solarized'
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-Bundle "honza/vim-snippets"
-Bundle 'vim-scripts/Gundo'
-Bundle 'fs111/pydoc.vim'
-Bundle 'Shougo/unite.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'ervandew/supertab'
-Bundle 'nvie/vim-flake8'
-"Bundle 'Townk/vim-autoclose'
-" vim-scripts repos
-Bundle 'L9'
-Bundle 'matchit.zip'
-"Bundle 'FuzzyFinder'
-" non-GitHub repos
-Bundle 'git://git.wincent.com/command-t.git'
-" Git repos on your local machine (i.e. when working on your own plugin)
-" Bundle 'file:///Users/gmarik/path/to/plugin'
+Plugin 'Valloric/YouCompleteMe'
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
+"let g:ycm_server_keep_logfiles = 1
+"let g:ycm_server_log_level = 'debug'
 
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-sensible'
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'vim-scripts/Gundo'
+Plugin 'fs111/pydoc.vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'kien/ctrlp.vim'
+"Plugin 'ervandew/supertab'
+Plugin 'nvie/vim-flake8'
+"Plugin 'Townk/vim-autoclose'
+" vim-scripts repos
+Plugin 'L9'
+Plugin 'matchit.zip'
+"Plugin 'FuzzyFinder'
+" non-GitHub repos
+Plugin 'git://git.wincent.com/command-t.git'
+" Git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///Users/gmarik/path/to/plugin'
+
+"using snip-mate or ultisnips
+"Plugin 'garbas/vim-snipmate'
+" ULTISNIPS
+" Track the engine.
+Plugin 'SirVer/ultisnips'
+"
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+""""""""""""""""""
 
 filetype plugin indent on
 
@@ -62,6 +86,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 "CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+
 
 " Spell Check
 let b:myLang=0
