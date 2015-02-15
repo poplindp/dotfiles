@@ -8,6 +8,8 @@ ZSH=$HOME/.oh-my-zsh
  ZSH_THEME="robbyrussell"
 
 # Example aliases
+ alias pacman_Hutch="http_proxy=http://10.38.2.10:3128 sudo -E pacman"
+ alias yaourt_Hutch="http_proxy=http://10.38.2.10:3128 sudo -E yaourt"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
@@ -120,7 +122,8 @@ export PYTHONPATH=${ASAP_HOME}/Python:${ASAP_HOME}/x86_64:${PYTHONPATH}
 #
 #
 #### CULGI
-CULGI_PATH=/home/diego/local
+#CULGI_PATH=/home/diego/local
+CULGI_PATH=/usr
 export CULGI_INSTALL_DIR=${CULGI_PATH}/share/Culgi
 export PATH=${CULGI_PATH}/bin:$PATH
 export PYTHONPATH=${CULGI_PATH}/lib/python2.7/site-packages:${PYTHONPATH}
