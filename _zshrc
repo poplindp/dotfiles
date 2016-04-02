@@ -9,7 +9,7 @@ ZSH=$HOME/.oh-my-zsh
 
 # Example aliases
  alias pacman_Hutch="http_proxy=http://10.38.2.10:3128 sudo -E pacman"
- alias yaourt_Hutch="http_proxy=http://10.38.2.10:3128 sudo -E yaourt"
+ alias yaourt_Hutch="http_proxy=http://10.38.2.10:3128 https_proxy=http://10.38.2.10:3128 yaourt"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
@@ -93,7 +93,9 @@ module load use.own
 # aca van los exports
 
 PATH=${HOME}/bin:${HOME}/usr/bin:/usr/local/bin:${PATH}
-PYTHONPATH=/usr/lib64/python2.7/site-packages:${PYTHONPATH}
+#why should I?  Arch is not designed for this.
+PYTHONPATH=$HOME/local/lib/python2.7/site-packages:${PYTHONPATH}
+#PYTHONPATH=/usr/lib64/python2.7/site-packages:${PYTHONPATH}
 LD_LIBRARY_PATH=${HOME}/usr/lib:${LD_LIBRARY_PATH}
 
 
@@ -115,20 +117,20 @@ LD_LIBRARY_PATH=${HOME}/usr/xc/lib:${LD_LIBRARY_PATH}
 #export GPAW_SETUP_PATH=${HOME}/usr/src/gpaw-setups
 ##export GPAW_PYTHON=/usr/bin
 
-#### ASAP
-export ASAP_HOME=${HOME}/usr/src/Asap
-export PATH=${ASAP_HOME}/x86_64:${PATH}
-export PYTHONPATH=${ASAP_HOME}/Python:${ASAP_HOME}/x86_64:${PYTHONPATH}
+##### ASAP  (in any case, this should be done with the new property of AUTOENV
+#export ASAP_HOME=${HOME}/usr/src/Asap
+#export PATH=${ASAP_HOME}/x86_64:${PATH}
+#export PYTHONPATH=${ASAP_HOME}/Python:${ASAP_HOME}/x86_64:${PYTHONPATH}
+##
+##
+##### CULGI
+##CULGI_PATH=/home/diego/local
+#CULGI_PATH=/usr
+#export CULGI_INSTALL_DIR=${CULGI_PATH}/share/Culgi
+#export PATH=${CULGI_PATH}/bin:$PATH
+#export PYTHONPATH=${CULGI_PATH}/lib/python2.7/site-packages:${PYTHONPATH}
+#export LD_LIBRARY_PATH=${CULGI_PATH}/lib64:${LD_LIBRARY_PATH}
 #
-#
-#### CULGI
-#CULGI_PATH=/home/diego/local
-CULGI_PATH=/usr
-export CULGI_INSTALL_DIR=${CULGI_PATH}/share/Culgi
-export PATH=${CULGI_PATH}/bin:$PATH
-export PYTHONPATH=${CULGI_PATH}/lib/python2.7/site-packages:${PYTHONPATH}
-export LD_LIBRARY_PATH=${CULGI_PATH}/lib64:${LD_LIBRARY_PATH}
-
 
 # THESE VARS I DEFINED IN ~/bin/CulgiGPE_babel
 
@@ -165,3 +167,5 @@ export LD_LIBRARY_PATH=${CULGI_PATH}/lib64:${LD_LIBRARY_PATH}
 export PATH
 export PYTHONPATH
 export LD_LIBRARY_PATH
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

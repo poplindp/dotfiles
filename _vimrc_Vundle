@@ -1,27 +1,23 @@
 set nocompatible              " be iMproved, required
+filetype off                  " required!
 
 
-""" vim-plug
-" autodownload if not installed yet
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
 
-call plug#begin('~/.vim/plugged')
+""" Vundle
+" to be replaced by https://github.com/junegunn/vim-plug ?
+" see https://jordaneldredge.com/blog/why-i-switched-from-vundle-to-plug/
 
-" Load on nothing
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/vundle/
+call vundle#begin()
 
-Plug 'tpope/vim-sensible'
-Plug 'SirVer/ultisnips', { 'on': [] }
-Plug 'Valloric/YouCompleteMe', { 'on': [] }
-augroup load_us_ycm
-	autocmd!
-	autocmd InsertEnter * call plug#load('ultisnips', 'YouCompleteMe')
-		\| call youcompleteme#Enable() | autocmd! load_us_ycm
-augroup END
-let g:ycm_server_python_interpreter = "/usr/bin/python"
+" let Vundle manage Vundle
+" " required! 
+Plugin 'gmarik/vundle'
+
+" My bundles here:
+
+Plugin 'Valloric/YouCompleteMe'
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
@@ -30,7 +26,8 @@ let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 "let g:ycm_server_keep_logfiles = 1
 "let g:ycm_server_log_level = 'debug'
 
-Plug 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -41,35 +38,34 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'scrooloose/syntastic'
-Plug 'nvie/vim-flake8'
-Plug 'fs111/pydoc.vim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'altercation/vim-colors-solarized'
-Plug 'tpope/vim-fugitive'
-"Plug 'MarcWeber/vim-addon-mw-utils'
-"Plug 'tomtom/tlib_vim'
-Plug 'vim-scripts/Gundo'
-"Plug 'Shougo/unite.vim'
-"Plug 'ctrlpvim/ctrlp.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'L9'
-Plug 'matchit.zip'
-Plug 'tmux-plugins/vim-tmux'
-"Plug 'git://git.wincent.com/command-t.git'
+Plugin 'tpope/vim-sensible'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'nvie/vim-flake8'
+Plugin 'fs111/pydoc.vim'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-fugitive'
+"Plugin 'MarcWeber/vim-addon-mw-utils'
+"Plugin 'tomtom/tlib_vim'
+Plugin 'vim-scripts/Gundo'
+"Plugin 'Shougo/unite.vim'
+"Plugin 'kien/ctrlp.vim'
+"Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'L9'
+Plugin 'matchit.zip'
+"Plugin 'git://git.wincent.com/command-t.git'
 " Git repos on your local machine (i.e. when working on your own plugin)
-" Plug 'file:///Users/gmarik/path/to/plugin'
+" Plugin 'file:///Users/gmarik/path/to/plugin'
 
-" Add plugins to &runtimepath
-call plug#end()
+
+call vundle#end()            " required
 
 """"""""""""""""""
 
-command! PU PlugUpdate | PlugUpgrade
-
+syntax on
+filetype plugin indent on
 
 set t_Co=16                                                
 set background=dark " dark | light "                       
@@ -105,6 +101,7 @@ set number
 
 "autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
 autocmd FileType python map <F3> :call Flake8()<CR>
+map <F4> :NERDTreeToggle<CR>
 nmap <silent> <F6> :call ToggleSpell()<CR>
 map <F7> :tabp<Enter>
 map <F8> :tabn<Enter>
