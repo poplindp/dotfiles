@@ -8,8 +8,6 @@ ZSH=$HOME/.oh-my-zsh
  ZSH_THEME="robbyrussell"
 
 # Example aliases
- alias pacman_Hutch="http_proxy=http://10.38.2.10:3128 sudo -E pacman"
- alias yaourt_Hutch="http_proxy=http://10.38.2.10:3128 https_proxy=http://10.38.2.10:3128 yaourt"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
@@ -42,11 +40,17 @@ ZSH=$HOME/.oh-my-zsh
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse tmuxinator)
-plugins=(git battery autoenv colorize history python themes vi-mode yum archlinux dircycle gpg-agent git-extras rand-quote taskwarrior tmux web-search Pass fasd)
+plugins=(git battery colored-man-pages colorize history python themes vi-mode yum archlinux dircycle gpg-agent git-extras rand-quote taskwarrior tmux web-search Pass fasd tmuxinator)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+
+#powerline
+. /usr/share/zsh/site-contrib/powerline.zsh
+
+alias pacman_Hutch="http_proxy=http://10.38.2.10:3128 sudo -E pacman"
+alias yaourt_Hutch="http_proxy=http://10.38.2.10:3128 https_proxy=http://10.38.2.10:3128 yaourt"
 
 # ls *(<tab>  for options
 setopt extendedglob
@@ -72,22 +76,23 @@ bindkey '^N' history-search-forward
 #fi
 
 
-## MODULES
-# source this (work around for DISPLAY problem
-source /etc/profile.d/modules.XXsh
+## MODULES  (FIXME: not using it later and have an error since
+##	     /etc/profile.d/modules.XXsh uses export -f)
+## source this (work around for DISPLAY problem  (WHAT WAS THIS????)
+#source /etc/profile.d/modules.XXsh
+#
+##case "$0" in
+##          -sh|sh|*/sh)	modules_shell=sh ;;
+##       -ksh|ksh|*/ksh)	modules_shell=ksh ;;
+##       -zsh|zsh|*/zsh)	modules_shell=zsh ;;
+##    -bash|bash|*/bash)	modules_shell=bash ;;
+##esac
+##module() { eval `/usr/local/Modules/$MODULE_VERSION/bin/modulecmd $modules_shell $*`; }
+###module() { eval `/bin/modulecmd $modules_shell $*`; }
+#module() { eval `/usr/local/Modules/$MODULE_VERSION/bin/modulecmd zsh $*`; }
 
-#case "$0" in
-#          -sh|sh|*/sh)	modules_shell=sh ;;
-#       -ksh|ksh|*/ksh)	modules_shell=ksh ;;
-#       -zsh|zsh|*/zsh)	modules_shell=zsh ;;
-#    -bash|bash|*/bash)	modules_shell=bash ;;
-#esac
-#module() { eval `/usr/local/Modules/$MODULE_VERSION/bin/modulecmd $modules_shell $*`; }
-##module() { eval `/bin/modulecmd $modules_shell $*`; }
-module() { eval `/usr/local/Modules/$MODULE_VERSION/bin/modulecmd zsh $*`; }
-
-# Load necessary modules
-module load use.own
+## Load necessary modules
+#module load use.own
 
 
 # aca van los exports

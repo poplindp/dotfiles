@@ -15,7 +15,9 @@ URxvt.intensityStyles: False
 URxvt*buffered: true
 URxvt*cursorBlink: true
 URxvt*underlineColor: yellow
-URxvt*font:  xft:inconsolata:size=12:antialias=true
+!URxvt*font:  xft:inconsolata:size=12:antialias=true
+!URxvt.font:  xft:Inconsolata\ for\ Powerline:size=12:antialias=true
+URxvt.font:  xft:Sauce\ Code\ Powerline:size=12:antialias=true
 URxvt*depth: 32
 URxvt*borderless: 1
 URxvt*scrollBar: false
@@ -47,7 +49,7 @@ URxvt.matcher.button: 1
 
 ! Dark
 
-#define S_base03        [95]#002b36
+#define S_base03        #002b36
 #define S_base02        #073642
 #define S_base01        #586e75
 #define S_base00        #657b83
@@ -105,7 +107,24 @@ XTerm*customization: -color
 XTerm*termName: xterm-256color
 XTerm*font:  xft:inconsolata:size=12:antialias=true
 
-
+!! for xterm
+!UXTerm*customization: -color
+!UXTerm*termName: xterm-256color
+!UXTerm*font:  xft:Sauce\ Code\ Powerline:size=12:antialias=true
+UXTerm*faceName: Sauce Code Pro for Powerline
+UXTerm*faceSize: 12
+UXTerm*xftAntialias: 1
+UXTerm*eightBitInput: false
+UXTerm*metaSendsEscape: false
+UXTerm*fontMenu*fontdefault*Label: Default
+UXTerm*loginshell: 1
+UXTerm*locale: 1
+UXTerm*utf8: 1
+UXTerm*utf8Title: 1
+UXTerm*bellIsUrgent: 1
+UXTerm*borderWidth: 0
+UXTerm*scrollBar: 0
+UXTerm*cjkWidth: 0
 !!!!!!!!!!!!!!!  from manual help
 
 
