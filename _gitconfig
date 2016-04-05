@@ -1,0 +1,11 @@
+[user]
+	email = diego.pantano@gmail.com
+	name = diego
+[push]
+	default = simple
+[diff]
+	    tool = vimdiff
+[difftool]
+	    prompt = false
+[alias]
+	    d = difftool
