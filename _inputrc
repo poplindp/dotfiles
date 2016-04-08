@@ -1,0 +1,5 @@
+#To get vi keybindings in IPython, the MySQL client, and many other tools that use the GNU Readline library
+set editing-mode vi
+#C-L: clear-screen
+#C-l: clear-screen
+
