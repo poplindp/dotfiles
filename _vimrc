@@ -22,13 +22,14 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'SirVer/ultisnips', { 'on': [] }
 " Snippets are separated from the engine. vim-snippets are required
 Plug 'honza/vim-snippets', { 'on': [] }
-Plug 'Valloric/YouCompleteMe', { 'on': [] }
+
+Plug 'Valloric/YouCompleteMe'
 augroup load_us_ycm
 	autocmd!
 	autocmd InsertEnter * call plug#load('ultisnips', 'vim-snippets', 'YouCompleteMe')
 		\| call youcompleteme#Enable() | autocmd! load_us_ycm
 augroup END
-let g:ycm_server_python_interpreter = "/usr/bin/python"
+let g:ycm_server_python_interpreter = "/usr/bin/python2"
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']

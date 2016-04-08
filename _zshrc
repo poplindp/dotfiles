@@ -119,7 +119,8 @@ bindkey '^N' history-search-forward
 ## Exports (local python and local dirs)
 #PATH=${HOME}/.local/bin:${HOME}/bin:${HOME}/usr/bin:/usr/local/bin:${PATH}
 PATH=${HOME}/.local/bin:${PATH}
-PYTHONPATH=$HOME/.local/lib/python2.7/site-packages:${PYTHONPATH}
+# this shouldnt be used with envpython???
+#PYTHONPATH=$HOME/.local/lib/python2.7/site-packages:${PYTHONPATH}
 LD_LIBRARY_PATH=${HOME}/.local/lib:${LD_LIBRARY_PATH}
 
 
