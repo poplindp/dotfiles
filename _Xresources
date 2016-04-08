@@ -8,48 +8,29 @@
 !
 !
 
+!! drop in Solarized colorscheme for Xresources/Xdefaults
 
-URxvt.intensityStyles: False
-!URxvt.font: xft:DejaVu Sans Mono:pixelsize=14
-
-URxvt*buffered: true
-URxvt*cursorBlink: true
-URxvt*underlineColor: yellow
-!URxvt*font:  xft:inconsolata:size=12:antialias=true
-!URxvt.font:  xft:Inconsolata\ for\ Powerline:size=12:antialias=true
-URxvt.font:  xft:Sauce\ Code\ Powerline:size=12:antialias=true
-URxvt*font: xft:Sauce\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true,xft:Sauce\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true
-
-URxvt*depth: 32
-URxvt*borderless: 1
-URxvt*scrollBar: false
-URxvt*loginShell: true
-Urxvt*secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
-URxvt*saveLines: 5000
-URxvt*termName: rxvt-unicode
-URxvt.perl-ext-common: default,matcher
-URxvt.urlLauncher: chromium
-URxvt.matcher.button: 1
+!!SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
+!!--------- ------- ---- -------  ----------- ---------- ----------- -----------
+!!base03    #002b36  8/4 brblack  234 #1c1c1c 15 -12 -12   0  43  54 193 100  21
+!!base02    #073642  0/4 black    235 #262626 20 -12 -12   7  54  66 192  90  26
+!!base01    #586e75 10/7 brgreen  240 #585858 45 -07 -07  88 110 117 194  25  46
+!!base00    #657b83 11/7 bryellow 241 #626262 50 -07 -07 101 123 131 195  23  51
+!!base0     #839496 12/6 brblue   244 #808080 60 -06 -03 131 148 150 186  13  59
+!!base1     #93a1a1 14/4 brcyan   245 #8a8a8a 65 -05 -02 147 161 161 180   9  63
+!!base2     #eee8d5  7/7 white    254 #e4e4e4 92 -00  10 238 232 213  44  11  93
+!!base3     #fdf6e3 15/7 brwhite  230 #ffffd7 97  00  10 253 246 227  44  10  99
+!!yellow    #b58900  3/3 yellow   136 #af8700 60  10  65 181 137   0  45 100  71
+!!orange    #cb4b16  9/3 brred    166 #d75f00 50  50  55 203  75  22  18  89  80
+!!red       #dc322f  1/1 red      160 #d70000 50  65  45 220  50  47   1  79  86
+!!magenta   #d33682  5/5 magenta  125 #af005f 50  65 -05 211  54 130 331  74  83
+!!violet    #6c71c4 13/5 brmagenta 61 #5f5faf 50  15 -45 108 113 196 237  45  77
+!!blue      #268bd2  4/4 blue      33 #0087ff 55 -10 -45  38 139 210 205  82  82
+!!cyan      #2aa198  6/6 cyan      37 #00afaf 60 -35 -05  42 161 152 175  74  63
+!!green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60
 
 
-! Solarized color scheme for the X Window System
-!
-! http://ethanschoonover.com/solarized
-
-
-! Common
-
-#define S_yellow        #b58900
-#define S_orange        #cb4b16
-#define S_red           #dc322f
-#define S_magenta       #d33682
-#define S_violet        #6c71c4
-#define S_blue          #268bd2
-#define S_cyan          #2aa198
-#define S_green         #859900
-
-
-! Dark
+!! Use XTERM/HEX for emulate solarized in non 256-colors environments
 
 #define S_base03        #002b36
 #define S_base02        #073642
@@ -59,49 +40,110 @@ URxvt.matcher.button: 1
 #define S_base1         #93a1a1
 #define S_base2         #eee8d5
 #define S_base3         #fdf6e3
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+*background:            S_base03
+*foreground:            S_base00
+*fading:                40
+*fadeColor:             S_base03
+*cursorColor:           S_base1
+*pointerColorBackground:S_base01
+*pointerColorForeground:S_base1
+
+!! black dark/light
+*color0:                S_base02
+*color8:                S_base03
+
+!! red dark/light
+*color1:                S_red
+*color9:                S_orange
+
+!! green dark/light
+*color2:                S_green
+*color10:               S_base01
+
+!! yellow dark/light
+*color3:                S_yellow
+*color11:               S_base00
+
+!! blue dark/light
+*color4:                S_blue
+*color12:               S_base0
+
+!! magenta dark/light
+*color5:                S_magenta
+*color13:               S_violet
+
+!! cyan dark/light
+*color6:                S_cyan
+*color14:               S_base1
+
+!! white dark/light
+*color7:                S_base2
+*color15:               S_base3
+
+! DONT TOUCH OTHERWISE COLORS STOP WORKING
+URxvt.intensityStyles: false
+URxvt*underlineColor: yellow
 
 
-! Light
+URxvt*termName: rxvt-unicode-256color
 
-! #define S_base03        #fdf6e3
-! #define S_base02        #eee8d5
-! #define S_base01        #93a1a1
-! #define S_base00        #839496
-! #define S_base0         #657b83
-! #define S_base1         #586e75
-! #define S_base2         #073642
-! #define S_base3         #002b36
+!! FONTS
+
+! Source Code Pro Setup
+URxvt.allow_bold:           true
+URxvt*font: xft:Sauce\ Code\ Powerline:size=12:regular:pixelsize=18:antialias=true
+URxvt*imFont: xft:Sauce\ Code\ Powerline:size=12:regular:pixelsize=18:antialias=true
+URxvt*boldFont: xft:Sauce\ Code\ Powerline:size=12:semibold:pixelsize=18:antialias=true
+URxvt*italicFont: xft:Sauce\ Code\ Powerline:size=12:italic:pixelsize=18:antialias=true
+URxvt*boldItalicFont: xft:Sauce\ Code\ Powerline:size=12:semibold:italic:pixelsize=18:antialias=true
+URxvt*letterSpace: 0
 
 
-! To only apply colors to your terminal, for example, prefix
-! the color assignment statement with its name. Example:
-!
-! URxvt*background:            S_base03
+! Inconsolata Setup
+/* URxvt.allow_bold:           true
+URxvt*font: xft:Inconsolata\ for\ Powerline:regular:pixelsize=18:size=12:antialias=true
+URxvt*imFont: xft:Inconsolata\ for\ Powerline:regular:pixelsize=18:size=12:antialias=true
+URxvt*boldFont: xft:Inconsolata\ for\ Powerline:bold:pixelsize=18:size=12:antialias=true
+URxvt*letterSpace: -1*/
+/*!Inconsolata
+URxvt.font: xft:Inconsolata for Powerline:pixelsize=20:antialias=true:hinting=true
+URxvt.boldFont: xft:Inconsolata for Powerline:bold:pixelsize=20:antialias=true:hinting=true
+URxvt.italicFont: xft:Inconsolata for Powerline:italic:pixelsize=20:antialias=true:hinting=true
+URxvt.boldItalicFont: xft:Inconsolata for Powerline:bold:italic:pixelsize=20:antialias=true
+URxvt.letterSpace: -1*/
+ 
+! Old trials
+/*
+!URxvt.font:  xft:Inconsolata\ for\ Powerline:size=12:antialias=true
+URxvt.font:  xft:Sauce\ Code\ Powerline:size=12:antialias=true
+!URxvt*font: xft:Sauce\ Code\ Powerline:pixelsize=13:antialias=true:hinting=true,xft:Sauce\ Code\ Powerline:pixelsize=13:antialias=true:hinting=true
+*/
 
-*background:              S_base03
-*foreground:              S_base0
-*fading:                  40
-*fadeColor:               S_base03
-*cursorColor:             S_base1
-*pointerColorBackground:  S_base01
-*pointerColorForeground:  S_base1
 
-*color0:                  S_base02
-*color1:                  S_red
-*color2:                  S_green
-*color3:                  S_yellow
-*color4:                  S_blue
-*color5:                  S_magenta
-*color6:                  S_cyan
-*color7:                  S_base2
-*color8:                  S_base03
-*color9:                  S_orange
-*color10:                 S_base01
-*color11:                 S_base00
-*color12:                 S_base0
-*color13:                 S_violet
-*color14:                 S_base1
-*color15:                 S_base3
+URxvt*buffered: true
+URxvt*cursorBlink: true
+URxvt*depth: 32
+URxvt*borderless: true
+URxvt*scrollBar: false
+URxvt*loginShell: true
+Urxvt*secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
+URxvt*saveLines: 10000
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher: chromium
+URxvt.matcher.button: 1
+
+## Fake transparency
+urxvt*transparent              : true
+URxvt*shading                  : 80
 
 
 !! for xterm
@@ -110,8 +152,8 @@ XTerm*termName: xterm-256color
 XTerm*font:  xft:inconsolata:size=12:antialias=true
 
 !! for xterm
-!UXTerm*customization: -color
-!UXTerm*termName: xterm-256color
+UXTerm*customization: -color
+UXTerm*termName: xterm-256color
 !UXTerm*font:  xft:Sauce\ Code\ Powerline:size=12:antialias=true
 UXTerm*faceName: Sauce Code Pro for Powerline
 UXTerm*faceSize: 12
@@ -127,8 +169,16 @@ UXTerm*bellIsUrgent: 1
 UXTerm*borderWidth: 0
 UXTerm*scrollBar: 0
 UXTerm*cjkWidth: 0
-!!!!!!!!!!!!!!!  from manual help
 
+
+
+
+
+
+
+
+
+!! Just a little man of options... better not activate here.
 
 ! Compile xft: Attempt to find a visual with the given bit depth;
 ! URxvt*depth: bitdepth
@@ -397,6 +447,3 @@ UXTerm*cjkWidth: 0
 
 ! Turn on/off ISO 14755 5.2 mode (default enabled).
 ! URxvt*iso14755_52: boolean
-
-
-

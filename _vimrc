@@ -71,6 +71,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+Plug 'tpope/vim-unimpaired'
+
 " List of old plugins that im not sure they are useful
 "Plug 'MarcWeber/vim-addon-mw-utils'
 "Plug 'tomtom/tlib_vim'
@@ -82,7 +84,20 @@ Plug 'junegunn/fzf.vim'
 " Add plugins to &runtimepath
 call plug#end()
 
+command! PU PlugUpdate | PlugUpgrade
 """"""""""""""""""
+
+call togglebg#map("<F5>")
+set t_Co=256
+"NEVER set gsolarized_termcolors=256, DEGRADES colors
+let g:solarized_termcolors=16
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+colorscheme solarized                                      
+highlight Comment cterm=italic
 
 ":set statusline=%<%f\ %h%m%r\ %y%=%{v:register}\ %-14.(%l,%c%V%)\ %P
 let $PYTHONPATH='/usr/lib/python3.5/site-packages'
@@ -93,15 +108,10 @@ set laststatus=2 " Always display the statusline in all windows
 set showtabline=2 " Always display the tabline, even if there is only one tab
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
-command! PU PlugUpdate | PlugUpgrade
-
 set number
-set t_Co=16                                                
-set background=dark " dark | light "                       
-colorscheme solarized                                      
+
 set cursorline
 set colorcolumn=80
-call togglebg#map("<F5>")
 
 set pastetoggle=<F12>
 nmap <silent> <F6> :call ToggleSpell()<CR>
