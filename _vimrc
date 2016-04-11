@@ -73,6 +73,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'tpope/vim-unimpaired'
+Plug 'majutsushi/tagbar'
 
 " List of old plugins that im not sure they are useful
 "Plug 'MarcWeber/vim-addon-mw-utils'
@@ -88,7 +89,6 @@ call plug#end()
 command! PU PlugUpdate | PlugUpgrade
 """"""""""""""""""
 
-call togglebg#map("<F5>")
 set t_Co=256
 "NEVER set gsolarized_termcolors=256, DEGRADES colors
 let g:solarized_termcolors=16
@@ -114,12 +114,14 @@ set number
 set cursorline
 set colorcolumn=80
 
-set pastetoggle=<F12>
+map <F4> :SyntasticToggleMode<CR>
+call togglebg#map("<F5>")
 nmap <silent> <F6> :call ToggleSpell()<CR>
 map <silent> <F7> :tabp<CR>
 map <silent> <F8> :tabn<Enter>
+nmap <F9> :TagbarToggle<CR>
+set pastetoggle=<F12>
 
-map <F4> :SyntasticToggleMode<CR>
 
 "NERDTree
 autocmd vimenter * if !argc() | NERDTree | endif
@@ -144,4 +146,4 @@ endfunction
 " Python files
 "autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
 autocmd FileType python map <F3> :call Flake8()<CR>
-autocmd FileType python nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
+autocmd FileType python nnoremap <buffer> <F10> :exec '!python' shellescape(@%, 1)<cr>
