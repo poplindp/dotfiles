@@ -129,21 +129,39 @@ URxvt.font:  xft:Sauce\ Code\ Powerline:size=12:antialias=true
 */
 
 
+URxvt*loginShell: true
 URxvt*buffered: true
 URxvt*cursorBlink: true
-URxvt*depth: 32
 URxvt*borderless: true
 URxvt*scrollBar: false
-URxvt*loginShell: true
 Urxvt*secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
 URxvt*saveLines: 10000
-URxvt.perl-ext-common: default,matcher
-URxvt.urlLauncher: chromium
-URxvt.matcher.button: 1
 
-## Fake transparency
+!! Fake transparency
+URxvt*depth: 32
 urxvt*transparent              : true
 URxvt*shading                  : 80
+
+!! No clue what is iso14755 but ctrl + shift were useless if true
+URxvt*iso14755: False
+
+!! Perl Extensions
+!! F11 fullscreen (depends on urxvt-fullscreen) and other perl tricks
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,matcher,fullscreen,newterm
+URxvt.keysym.F11: perl:fullscreen:switch
+URxvt.keysym.C-S-N: perl:newterm
+URxvt.matcher.rend.0: Uline Bold fg5
+URxvt.urlLauncher: chromium
+URxvt.matcher.button: 1
+URxvt.colorUL: #4682B4
+URxvt.url-select.launcher:  chromium
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
+
+URxvt.geometry: variable
+
 
 
 !! for xterm
@@ -156,10 +174,10 @@ UXTerm*customization: -color
 UXTerm*termName: xterm-256color
 !UXTerm*font:  xft:Sauce\ Code\ Powerline:size=12:antialias=true
 UXTerm*faceName: Sauce Code Pro for Powerline
-UXTerm*faceSize: 12
+UXTerm*faceSize: 13
 UXTerm*xftAntialias: 1
 UXTerm*eightBitInput: false
-UXTerm*metaSendsEscape: false
+UXTerm*metaSendsEscape: true
 UXTerm*fontMenu*fontdefault*Label: Default
 UXTerm*loginshell: 1
 UXTerm*locale: 1
@@ -171,8 +189,49 @@ UXTerm*scrollBar: 0
 UXTerm*cjkWidth: 0
 
 
+UXTerm*background:            S_base03
+UXTerm*foreground:            S_base00
+UXTerm*fading:                40
+UXTerm*fadeColor:             S_base03
+UXTerm*cursorColor:           S_base1
+UXTerm*pointerColorBackground:S_base01
+UXTerm*pointerColorForeground:S_base1
+
+!! black dark/light
+UXTerm*color0:                S_base02
+UXTerm*color8:                S_base03
+
+!! red dark/light
+UXTerm*color1:                S_red
+UXTerm*color9:                S_orange
+
+!! green dark/light
+UXTerm*color2:                S_green
+UXTerm*color10:               S_base01
+
+!! yellow dark/light
+UXTerm*color3:                S_yellow
+UXTerm*color11:               S_base00
+
+!! blue dark/light
+UXTerm*color4:                S_blue
+UXTerm*color12:               S_base0
+
+!! magenta dark/light
+UXTerm*color5:                S_magenta
+UXTerm*color13:               S_violet
+
+!! cyan dark/light
+UXTerm*color6:                S_cyan
+UXTerm*color14:               S_base1
+
+!! white dark/light
+UXTerm*color7:                S_base2
+UXTerm*color15:               S_base3
 
 
+!! needed for colors in ls
+xterm*boldColors: false
 
 
 
