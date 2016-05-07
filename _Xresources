@@ -100,11 +100,11 @@ URxvt*termName: rxvt-unicode-256color
 
 ! Source Code Pro Setup
 URxvt.allow_bold:           true
-URxvt*font: xft:Sauce\ Code\ Powerline:size=12:regular:pixelsize=18:antialias=true
-URxvt*imFont: xft:Sauce\ Code\ Powerline:size=12:regular:pixelsize=18:antialias=true
-URxvt*boldFont: xft:Sauce\ Code\ Powerline:size=12:semibold:pixelsize=18:antialias=true
-URxvt*italicFont: xft:Sauce\ Code\ Powerline:size=12:italic:pixelsize=18:antialias=true
-URxvt*boldItalicFont: xft:Sauce\ Code\ Powerline:size=12:semibold:italic:pixelsize=18:antialias=true
+URxvt*font: xft:Source\ Code\ Pro:size=12:regular:pixelsize=18:antialias=true
+URxvt*imFont: xft:Source\ Code\ Pro:size=12:regular:pixelsize=18:antialias=true
+URxvt*boldFont: xft:Source\ Code\ Pro:size=12:semibold:pixelsize=18:antialias=true
+URxvt*italicFont: xft:Source\ Code\ Pro:size=12:italic:pixelsize=18:antialias=true
+URxvt*boldItalicFont: xft:Source\ Code\ Pro:size=12:semibold:italic:pixelsize=18:antialias=true
 URxvt*letterSpace: 0
 
 
@@ -167,13 +167,13 @@ URxvt.geometry: variable
 !! for xterm
 XTerm*customization: -color
 XTerm*termName: xterm-256color
-XTerm*font:  xft:inconsolata:size=12:antialias=true
+XTerm*font:  xft:Source\ Code\ Pro:size=12:antialias=true
 
 !! for xterm
 UXTerm*customization: -color
 UXTerm*termName: xterm-256color
 !UXTerm*font:  xft:Sauce\ Code\ Powerline:size=12:antialias=true
-UXTerm*faceName: Sauce Code Pro for Powerline
+UXTerm*faceName: Source\ Code\ Pro
 UXTerm*faceSize: 13
 UXTerm*xftAntialias: 1
 UXTerm*eightBitInput: false
