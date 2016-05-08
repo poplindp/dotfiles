@@ -217,10 +217,10 @@ UXTerm*cjkWidth: 0
 UXTerm*background:            S_base03
 UXTerm*foreground:            S_base00
 UXTerm*fading:                40
-Term*fadeColor:             S_base03
+UXTerm*fadeColor:             S_base03
 UXTerm*cursorColor:           S_base1
 UXTerm*pointerColorBackground:S_base01
-Term*pointerColorForeground:S_base1
+UXTerm*pointerColorForeground:S_base1
 
 !! black dark/light
 UXTerm*color0:                S_base02
@@ -256,16 +256,16 @@ UXTerm*color15:               S_base3
 
 
 !! needed for colors in ls
-xterm*boldColors: false
+uxterm*boldColors: false
 
 
 XTerm*background:            S_base03
 XTerm*foreground:            S_base00
 XTerm*fading:                40
-Term*fadeColor:             S_base03
+XTerm*fadeColor:             S_base03
 XTerm*cursorColor:           S_base1
 XTerm*pointerColorBackground:S_base01
-Term*pointerColorForeground:S_base1
+XTerm*pointerColorForeground:S_base1
 
 !! black dark/light
 XTerm*color0:                S_base02
