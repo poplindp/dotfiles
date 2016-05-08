@@ -100,13 +100,23 @@ URxvt*termName: rxvt-unicode-256color
 
 ! Source Code Pro Setup
 URxvt.allow_bold:           true
+URxvt*font: xft:Source\ Code\ Pro:size=12:regular:pixelsize=18:antialias=true
+URxvt*imFont: xft:Source\ Code\ Pro:size=12:regular:pixelsize=18:antialias=true
+URxvt*boldFont: xft:Source\ Code\ Pro:size=12:semibold:pixelsize=18:antialias=true
+URxvt*italicFont: xft:Source\ Code\ Pro:size=12:italic:pixelsize=18:antialias=true
+URxvt*boldItalicFont: xft:Source\ Code\ Pro:size=12:semibold:italic:pixelsize=18:antialias=true
+URxvt*letterSpace: 0
+
+
+/*! Source Code Pro Setup
+URxvt.allow_bold:           true
 URxvt*font: xft:Sauce\ Code\ Powerline:size=12:regular:pixelsize=18:antialias=true
 URxvt*imFont: xft:Sauce\ Code\ Powerline:size=12:regular:pixelsize=18:antialias=true
 URxvt*boldFont: xft:Sauce\ Code\ Powerline:size=12:semibold:pixelsize=18:antialias=true
 URxvt*italicFont: xft:Sauce\ Code\ Powerline:size=12:italic:pixelsize=18:antialias=true
 URxvt*boldItalicFont: xft:Sauce\ Code\ Powerline:size=12:semibold:italic:pixelsize=18:antialias=true
 URxvt*letterSpace: 0
-
+*/
 
 ! Inconsolata Setup
 /* URxvt.allow_bold:           true
@@ -114,12 +124,14 @@ URxvt*font: xft:Inconsolata\ for\ Powerline:regular:pixelsize=18:size=12:antiali
 URxvt*imFont: xft:Inconsolata\ for\ Powerline:regular:pixelsize=18:size=12:antialias=true
 URxvt*boldFont: xft:Inconsolata\ for\ Powerline:bold:pixelsize=18:size=12:antialias=true
 URxvt*letterSpace: -1*/
+
 /*!Inconsolata
-URxvt.font: xft:Inconsolata for Powerline:pixelsize=20:antialias=true:hinting=true
-URxvt.boldFont: xft:Inconsolata for Powerline:bold:pixelsize=20:antialias=true:hinting=true
-URxvt.italicFont: xft:Inconsolata for Powerline:italic:pixelsize=20:antialias=true:hinting=true
-URxvt.boldItalicFont: xft:Inconsolata for Powerline:bold:italic:pixelsize=20:antialias=true
-URxvt.letterSpace: -1*/
+URxvt.font: xft:Inconsolata:pixelsize=20:antialias=true:hinting=true
+URxvt.boldFont: xft:Inconsolata:bold:pixelsize=20:antialias=true:hinting=true
+URxvt.italicFont: xft:Inconsolata:italic:pixelsize=20:antialias=true:hinting=true
+URxvt.boldItalicFont: xft:Inconsolata:bold:italic:pixelsize=20:antialias=true
+URxvt.letterSpace: -1
+*/
  
 ! Old trials
 /*
@@ -173,7 +185,8 @@ XTerm*font:  xft:inconsolata:size=12:antialias=true
 UXTerm*customization: -color
 UXTerm*termName: xterm-256color
 !UXTerm*font:  xft:Sauce\ Code\ Powerline:size=12:antialias=true
-UXTerm*faceName: Sauce Code Pro for Powerline
+!UXTerm*faceName: Inconsolata
+UXTerm*faceName: Source\ Code\ Pro
 UXTerm*faceSize: 13
 UXTerm*xftAntialias: 1
 UXTerm*eightBitInput: false

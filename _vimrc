@@ -23,6 +23,7 @@ Plug 'SirVer/ultisnips', { 'on': [] }
 " Snippets are separated from the engine. vim-snippets are required
 Plug 'honza/vim-snippets', { 'on': [] }
 
+" Compile it with python2 install.py
 Plug 'Valloric/YouCompleteMe'
 augroup load_us_ycm
 	autocmd!
@@ -75,12 +76,27 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'majutsushi/tagbar'
 
+Plug 'Valloric/vim-operator-highlight'
+Plug 'whatyouhide/vim-lengthmatters'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+
+Plug 'Raimondi/delimitMate'
+Plug 'pgdouyon/vim-evanesco'
+Plug 'djoshea/vim-autoread'
+Plug 'tpope/vim-obsession'
+Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
+
+
+Plug 'dietsche/vim-lastplace'
+let g:lastplace_ignore = "gitcommit,svn"
+
 " List of old plugins that im not sure they are useful
 "Plug 'MarcWeber/vim-addon-mw-utils'
 "Plug 'tomtom/tlib_vim'
 "Plug 'Shougo/unite.vim'
-"Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'L9'
 "Plug 'matchit.zip'
 
 " Add plugins to &runtimepath
