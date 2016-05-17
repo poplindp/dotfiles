@@ -32,6 +32,11 @@ Host=spqr_tunnel
     ControlPersist no
     #ProxyCommand=ssh psmn nc spqr.dyndns.tv 11111
 
+Host=sgi_rYC
+    Hostname 195.101.0.132
+    User diego
+    ProxyCommand=ssh -YC spqr_r nc %h %p 2>/dev/null
+
 Host=sgi_rX
     Hostname 195.101.0.132
     User diego
