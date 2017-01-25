@@ -70,8 +70,8 @@ plugins=(git battery colored-man-pages colorize history python themes vi-mode ar
 
 source $ZSH/oh-my-zsh.sh
 
-if [[ -r ~/.local/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
-    source ~/.local/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh
+if [[ -r ~/.local/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
+    source ~/.local/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
 fi
 
 # Customize to your needs...
