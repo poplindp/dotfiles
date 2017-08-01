@@ -47,6 +47,12 @@ Host=sgi_r
     User diego
     ProxyCommand=ssh spqr_r nc %h %p 2>/dev/null
 
+Host=sgi
+#    Hostname=10.38.111.47
+    Hostname 195.101.0.132
+    User=diego
+#    User=accelrys
+
 # ENS-Lyon General
 Host=sshProxy_Lyon
     Hostname=ssh.ens-lyon.fr
@@ -85,11 +91,6 @@ Host=dell_2
 
 Host=master1
     User=a0h02405
-#    User=accelrys
-
-Host=sgi
-    Hostname=10.38.111.47
-    User=diego
 #    User=accelrys
 
 
