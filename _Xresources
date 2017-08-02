@@ -237,7 +237,7 @@ xterm*color15:               S_base3
 xterm*boldColors: false
 
 
-# xpdf settings
+! xpdf settings
 xpdf.geometry: 1280x1024
 xpdf.initialZoom: width
 
