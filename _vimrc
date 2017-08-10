@@ -36,7 +36,8 @@ augroup load_us_ycm
 	autocmd InsertEnter * call plug#load('ultisnips', 'vim-snippets', 'YouCompleteMe')
 		\| call youcompleteme#Enable() | autocmd! load_us_ycm
 augroup END
-let g:ycm_server_python_interpreter = "/usr/bin/python2"
+"let g:ycm_server_python_interpreter = "/usr/bin/python2"
+let g:ycm_server_python_interpreter = "/usr/bin/python"
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
@@ -126,7 +127,7 @@ colorscheme solarized
 highlight Comment cterm=italic
 
 ":set statusline=%<%f\ %h%m%r\ %y%=%{v:register}\ %-14.(%l,%c%V%)\ %P
-let $PYTHONPATH='/usr/lib/python3.5/site-packages'
+let $PYTHONPATH='/usr/lib/python3.6/site-packages'
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
@@ -140,23 +141,13 @@ set number
 set cursorline
 set colorcolumn=80
 
-map <F4> :SyntasticToggleMode<CR>
-call togglebg#map("<F5>")
-nmap <silent> <F6> :call ToggleSpell()<CR>
-map <silent> <F7> :tabp<CR>
-map <silent> <F8> :tabn<Enter>
-nmap <F9> :TagbarToggle<CR>
-set pastetoggle=<F12>
-
-
 "NERDTree
 "autocmd vimenter * if !argc() | NERDTree | endif
-map <C-e> :NERDTreeToggle<CR>
-"silent! nmap <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 "fugitive
 autocmd BufReadPost fugitive://* set bufhidden=delete
+set diffopt+=vertical
 
 " Spell Check
 let b:myLang=0
@@ -172,7 +163,19 @@ function! ToggleSpell()
 	echo "spell checking language:" g:myLangList[b:myLang]
 endfunction
 
+" Mappings
+map <F4> :SyntasticToggleMode<CR>
+call togglebg#map("<F5>")
+nmap <silent> <F6> :call ToggleSpell()<CR>
+map <silent> <F7> :tabp<CR>
+map <silent> <F8> :tabn<Enter>
+nmap <F9> :TagbarToggle<CR>
+set pastetoggle=<F12>
+map <C-e> :NERDTreeToggle<CR>
+"silent! nmap <C-n> :NERDTreeToggle<CR>
 " Python files
 "autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
 autocmd FileType python map <F3> :call Flake8()<CR>
 autocmd FileType python nnoremap <buffer> <F10> :exec '!python' shellescape(@%, 1)<cr>
+
+
