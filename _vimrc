@@ -17,7 +17,13 @@ Plug 'tpope/vim-sensible'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'altercation/vim-colors-solarized'
 
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+"Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+"
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
+
+Plug 'mhinz/vim-startify'
 
 Plug 'SirVer/ultisnips', { 'on': [] }
 " Snippets are separated from the engine. vim-snippets are required
@@ -105,6 +111,9 @@ call plug#end()
 command! PU PlugUpdate | PlugUpgrade
 """"""""""""""""""
 
+set encoding=utf8
+"set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
+
 set t_Co=256
 "NEVER set gsolarized_termcolors=256, DEGRADES colors
 let g:solarized_termcolors=16
@@ -141,10 +150,13 @@ set pastetoggle=<F12>
 
 
 "NERDTree
-autocmd vimenter * if !argc() | NERDTree | endif
-"map <C-n> :NERDTreeToggle<CR>
-silent! nmap <C-n> :NERDTreeToggle<CR>
+"autocmd vimenter * if !argc() | NERDTree | endif
+map <C-e> :NERDTreeToggle<CR>
+"silent! nmap <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+"fugitive
+autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " Spell Check
 let b:myLang=0
