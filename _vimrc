@@ -11,17 +11,35 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-" Load on nothing
+
+"  { 'on': [] }  :   doesn't load, it should be loaded using :Plug
 
 Plug 'tpope/vim-sensible'
 Plug 'Lokaltog/vim-easymotion'
+map <Tab> <Plug>(easymotion-prefix)
+
 Plug 'altercation/vim-colors-solarized'
 
 "Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-"
 Plug 'scrooloose/nerdtree'
+let g:NERDTreeWinPos = "right"
+let g:NERDTreeDirArrows=1
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
+
+Plug 'jlanzarotta/bufexplorer'
 
 Plug 'mhinz/vim-startify'
 
@@ -30,7 +48,7 @@ Plug 'SirVer/ultisnips', { 'on': [] }
 Plug 'honza/vim-snippets', { 'on': [] }
 
 " Compile it with python2 install.py
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 augroup load_us_ycm
 	autocmd!
 	autocmd InsertEnter * call plug#load('ultisnips', 'vim-snippets', 'YouCompleteMe')
@@ -54,6 +72,7 @@ Plug 'scrooloose/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+let g:syntastic_python_python_exec = 'python3'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -66,18 +85,21 @@ augroup load_pythonland
 	autocmd FileType python call plug#load('pydoc.vim','vim-flake8') | autocmd! load_pythonland
 augroup END 
 
-Plug 'vim-scripts/Gundo', { 'on': [] }
+"Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
+Plug 'sjl/gundo.vim'
 augroup load_gundo
 	autocmd!
 	autocmd InsertEnter * call plug#load('Gundo') | autocmd! load_gundo
 augroup END
+let g:gundo_prefer_python3 = 1
 
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux'
 
 Plug 'tpope/vim-fugitive'
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': 'yes \| ./install' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'tpope/vim-unimpaired'
@@ -112,8 +134,10 @@ call plug#end()
 command! PU PlugUpdate | PlugUpgrade
 """"""""""""""""""
 
-set encoding=utf8
-"set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
+set encoding=utf-8
+set anti enc=utf-8
+set guifont=InconsolataForPowerline\ Nerd\ Font\ 12
+"set guifont=LiberationMono\ 12
 
 set t_Co=256
 "NEVER set gsolarized_termcolors=256, DEGRADES colors
@@ -163,9 +187,19 @@ function! ToggleSpell()
 	echo "spell checking language:" g:myLangList[b:myLang]
 endfunction
 
+" autoreload vimrc
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
+
+set showbreak=↪
+
+"
 " Mappings
 map <F4> :SyntasticToggleMode<CR>
-call togglebg#map("<F5>")
+"call togglebg#map("<F5>")
+nnoremap <F5> :GundoToggle<CR>
 nmap <silent> <F6> :call ToggleSpell()<CR>
 map <silent> <F7> :tabp<CR>
 map <silent> <F8> :tabn<Enter>
@@ -177,5 +211,3 @@ map <C-e> :NERDTreeToggle<CR>
 "autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
 autocmd FileType python map <F3> :call Flake8()<CR>
 autocmd FileType python nnoremap <buffer> <F10> :exec '!python' shellescape(@%, 1)<cr>
-
-
