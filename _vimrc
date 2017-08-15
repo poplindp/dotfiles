@@ -211,3 +211,4 @@ map <C-e> :NERDTreeToggle<CR>
 "autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
 autocmd FileType python map <F3> :call Flake8()<CR>
 autocmd FileType python nnoremap <buffer> <F10> :exec '!python' shellescape(@%, 1)<cr>
+
