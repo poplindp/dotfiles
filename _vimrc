@@ -19,41 +19,46 @@ Plug 'tpope/vim-sensible'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'mhinz/vim-startify'
 Plug 'altercation/vim-colors-solarized'
+Plug 'sjl/gundo.vim' ", { 'on': 'GundoToggle' }
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plug 'junegunn/fzf', { 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'SirVer/ultisnips', { 'on': [] }
-Plug 'honza/vim-snippets', { 'on': [] } " Snippets are separated from the engine. vim-snippets are required
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' } " Compile it with python2 install.py
-Plug 'scrooloose/syntastic'
-Plug 'nvie/vim-flake8', { 'on': [] }
-Plug 'fs111/pydoc.vim', { 'on': [] }
-Plug 'sjl/gundo.vim' ", { 'on': 'GundoToggle' }
-Plug 'tpope/vim-fugitive'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'tmux-plugins/vim-tmux'
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf', { 'do': 'yes \| ./install' }
-Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-unimpaired'
-Plug 'majutsushi/tagbar'
-Plug 'Valloric/vim-operator-highlight'
 Plug 'whatyouhide/vim-lengthmatters'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
 Plug 'pgdouyon/vim-evanesco'
 Plug 'djoshea/vim-autoread'
-Plug 'tpope/vim-obsession'
-Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
+Plug 'thaerkh/vim-workspace'
 Plug 'dietsche/vim-lastplace'
+Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
 
-" List of old plugins that im not sure they are useful
-"Plug 'MarcWeber/vim-addon-mw-utils'
-"Plug 'tomtom/tlib_vim'
-"Plug 'Shougo/unite.vim'
-"Plug 'matchit.zip'
+Plug 'SirVer/ultisnips', { 'for': ['c', 'c++', 'perl', 'tcl', 'python'] }
+    Plug 'honza/vim-snippets', { 'for': ['c', 'c++', 'perl', 'tcl', 'python'] } " Snippets are separated from the engine. vim-snippets are required
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' } " Compile it with python2 install.py
+Plug 'w0rp/ale'
+Plug 'fs111/pydoc.vim', { 'for': 'python' }
+Plug 'python-mode/python-mode', { 'for': 'python' }
+Plug 'nathanaelkane/vim-indent-guides', { 'for': ['c', 'c++', 'perl', 'tcl', 'python'] }
+Plug 'majutsushi/tagbar', { 'for': ['c++', 'python'] }
+Plug 'Valloric/vim-operator-highlight'
+Plug 'skywind3000/asyncrun.vim'
+
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'tmux-plugins/vim-tmux'
+
+
+" List of plugins that not sure they are useful
+"Plug 'scrooloose/syntastic', {}   "replaced by ale
+"Plug 'nvie/vim-flake8', { 'for': 'python' }   "replaced by ale
+"Plug 'terryma/vim-multiple-cursors'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -63,6 +68,9 @@ command! PU PlugUpdate | PlugUpgrade
 """""""""
 """""""""
 """""""""
+
+let mapleader = ","  "sets up the leader for all maps
+let maplocalleader = "\\" "a prefix for mappings that only take effect for certain types of files
 
 let $PYTHONPATH='/usr/lib/python3.6/site-packages'
 
@@ -115,19 +123,19 @@ map <Tab> <Plug>(easymotion-prefix)
 
 " vim-colors-solarized
 let g:solarized_termcolors= 16 	" 16 | 256,  256 degrades colors
-let g:solarized_termtrans = 0 	" 0 | 1 
-let g:solarized_degrade = 0	" 0 | 1 
-let g:solarized_bold = 1	" 1 | 0 
-let g:solarized_underline = 1	" 1 | 0 
-let g:solarized_italic = 1	" 1 | 0 
-let g:solarized_contrast = "normal" 	" "normal"| "high" or "low" 
+let g:solarized_termtrans = 0 	" 0 | 1
+let g:solarized_degrade = 0	" 0 | 1
+let g:solarized_bold = 1	" 1 | 0
+let g:solarized_underline = 1	" 1 | 0
+let g:solarized_italic = 1	" 1 | 0
+let g:solarized_contrast = "normal" 	" "normal"| "high" or "low"
 let g:solarized_visibility= "normal"	" "normal"| "high" or "low"
 if has('gui_running')
     set background=light
 else
     set background=dark
 endif
-colorscheme solarized                                      
+colorscheme solarized
 highlight Comment cterm=italic
 
 " nerdtree
@@ -135,6 +143,7 @@ let g:NERDTreeWinPos = "right"
 let g:NERDTreeDirArrows=1
 "autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 
 " vim-devicons
 let g:NERDTreeIndicatorMapCustom = {
@@ -170,21 +179,30 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_python_python_exec = 'python3'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"" syntastic
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_python_python_exec = 'python3'
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+
+" ale (replace syntastic and flake8 in vim8)
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+
+" python-mode
+let g:pymode_python = 'python3'
+let g:pymode_options = 1
 
 " Gundo
-augroup load_gundo
-	autocmd!
-	autocmd InsertEnter * call plug#load('Gundo') | autocmd! load_gundo
-augroup END
 let g:gundo_prefer_python3 = 1
 
 " vim-fugitive
@@ -200,30 +218,73 @@ let g:indent_guides_guide_size = 1
 " vim-lastplace
 let g:lastplace_ignore = "gitcommit,svn"
 
+" vim-workspace
+let g:workspace_session_name = 'Session.vim'
+
+
+
 "
-"
+" Functions
 "
 
 
+augroup SPACEVIM_ASYNCRUN
+    autocmd!
+    " Automatically open the quickfix window
+    autocmd User AsyncRunStart call asyncrun#quickfix_toggle(15, 1)
+augroup END
+
+function! s:compile_and_run()
+    exec 'w'
+    if &filetype == 'c'
+        exec "AsyncRun! gcc % -o %<; time ./%<"
+    elseif &filetype == 'cpp'
+       exec "AsyncRun! g++ -std=c++11 % -o %<; time ./%<"
+    elseif &filetype == 'java'
+       exec "AsyncRun! javac %; time java %<"
+    elseif &filetype == 'sh'
+       exec "AsyncRun! time bash %"
+    elseif &filetype == 'python'
+       exec "AsyncRun! time python %"
+    endif
+endfunction
+
+
+
+"
+" FILES
+"
+"
 " Python files
-augroup pythonfiles
+augroup programming_files
 	"autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
-	autocmd FileType python map <F3> :call Flake8()<CR>
-	autocmd FileType python nnoremap <buffer> <F10> :exec '!python' shellescape(@%, 1)<cr>
-	autocmd FileType python call plug#load('pydoc.vim','vim-flake8') | autocmd! load_pythonland
+	autocmd FileType python,cpp,c,perl,tcl nnoremap <F10> :call <SID>compile_and_run()<CR>
+	"autocmd FileType python nnoremap <buffer> <F10> :exec '!python' shellescape(@%, 1)<cr>
+	autocmd FileType python,cpp,c,perl,tcl :IndentGuidesEnable
+	autocmd FileType python,cpp :TagbarOpen
+"map <F4> :SyntasticToggleMode<CR>
+augroup END
+
+augroup text_files
+    autocmd!
+    autocmd FileType tex,latex,context,plaintex,text nmap <silent> <buffer> <F6> :call ToggleSpell()<CR>
+"nmap <silent> <F6> :call ToggleSpell()<CR>
 augroup END
 
 "
 " Mappings
 "
-map <F4> :SyntasticToggleMode<CR>
-"call togglebg#map("<F5>")
-nnoremap <F5> :GundoToggle<CR>
-nmap <silent> <F6> :call ToggleSpell()<CR>
-map <silent> <F7> :tabp<CR>
-map <silent> <F8> :tabn<Enter>
-nmap <F9> :TagbarToggle<CR>
-set pastetoggle=<F12>
-map <C-e> :NERDTreeToggle<CR>
-"silent! nmap <C-n> :NERDTreeToggle<CR>
+" :IndentGuidesToggle
 
+call togglebg#map("<F2>")
+nnoremap <silent> <F3> :GundoToggle<CR>
+map <silent> <F4> :NERDTreeToggle<CR>
+map <silent> <F5> :ToggleBufExplorer<CR>
+"map <silent> <F6> USED by Spell, Syntax
+map <silent> <F7> :tabp<CR>
+map <silent> <F8> :tabn<CR>
+nmap <F9> :TagbarToggle<CR>
+"map <silent> <F10> USED by exec
+set pastetoggle=<F12>
+
+nnoremap <localleader>s :ToggleWorkspace<CR>
