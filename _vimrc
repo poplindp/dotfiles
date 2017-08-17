@@ -52,7 +52,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 Plug 'christoomey/vim-tmux-navigator'
+
 Plug 'tmux-plugins/vim-tmux'
+Plug 'zplug/vim-zplug'
+
+
 
 
 " List of plugins that not sure they are useful
@@ -220,7 +224,6 @@ let g:lastplace_ignore = "gitcommit,svn"
 
 " vim-workspace
 let g:workspace_session_name = 'Session.vim'
-
 
 
 "
