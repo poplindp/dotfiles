@@ -198,7 +198,7 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
 
-" python-mode
+" python-mode (do not erase .ropeproject directory)
 let g:pymode_python = 'python3'
 let g:pymode_options = 1
 
@@ -258,9 +258,11 @@ endfunction
 " Python files
 augroup programming_files
 	"autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
+	autocmd FileType python,cpp,c,perl,tcl nmap <buffer> <F6> :ALEToggle<CR>
 	autocmd FileType python,cpp,c,perl,tcl nnoremap <F10> :call <SID>compile_and_run()<CR>
 	"autocmd FileType python nnoremap <buffer> <F10> :exec '!python' shellescape(@%, 1)<cr>
 	autocmd FileType python,cpp,c,perl,tcl :IndentGuidesEnable
+	autocmd FileType python,cpp,c,perl,tcl :ALEEnable
 	autocmd FileType python,cpp :TagbarOpen
 "map <F4> :SyntasticToggleMode<CR>
 augroup END
