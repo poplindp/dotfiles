@@ -20,9 +20,9 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'mhinz/vim-startify'
 Plug 'altercation/vim-colors-solarized'
 Plug 'sjl/gundo.vim' ", { 'on': 'GundoToggle' }
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug '~/.zplug/repos/junegunn/fzf' | Plug 'junegunn/fzf.vim'
 "Plug 'junegunn/fzf', { 'do': 'yes \| ./install' }
-Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -31,6 +31,7 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'tpope/vim-unimpaired'
 Plug 'whatyouhide/vim-lengthmatters'
 Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/rainbow_parentheses.vim', { 'on':  'RainbowParentheses' }
 Plug 'pgdouyon/vim-evanesco'
 Plug 'djoshea/vim-autoread'
 Plug 'thaerkh/vim-workspace'
@@ -43,8 +44,8 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py' } " Compile it with python
 Plug 'w0rp/ale'
 Plug 'fs111/pydoc.vim', { 'for': 'python' }
 Plug 'python-mode/python-mode', { 'for': 'python' }
-Plug 'nathanaelkane/vim-indent-guides', { 'for': ['c', 'c++', 'perl', 'tcl', 'python'] }
-Plug 'majutsushi/tagbar', { 'for': ['c++', 'python'] }
+Plug 'nathanaelkane/vim-indent-guides', { 'for': ['c', 'c++', 'perl', 'tcl', 'python', 'bash', 'zsh'] }
+Plug 'majutsushi/tagbar', { 'for': ['c++', 'python', 'bash', 'zsh'] }
 Plug 'Valloric/vim-operator-highlight'
 Plug 'skywind3000/asyncrun.vim'
 
@@ -55,6 +56,8 @@ Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'tmux-plugins/vim-tmux'
 Plug 'zplug/vim-zplug'
+Plug 'chrisbra/vim-zsh'
+Plug 'tpope/vim-sleuth'
 
 
 
@@ -72,6 +75,7 @@ command! PU PlugUpdate | PlugUpgrade
 """""""""
 """""""""
 """""""""
+filetype indent on
 
 let mapleader = ","  "sets up the leader for all maps
 let maplocalleader = "\\" "a prefix for mappings that only take effect for certain types of files
@@ -261,12 +265,12 @@ endfunction
 " Python files
 augroup programming_files
 	"autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
-	autocmd FileType python,cpp,c,perl,tcl nmap <buffer> <F6> :ALEToggle<CR>
+	autocmd FileType python,cpp,c,perl,tcl,shell,bash,zsh nmap <buffer> <F6> :ALEToggle<CR>
 	autocmd FileType python,cpp,c,perl,tcl nnoremap <F10> :call <SID>compile_and_run()<CR>
 	"autocmd FileType python nnoremap <buffer> <F10> :exec '!python' shellescape(@%, 1)<cr>
 	autocmd FileType python,cpp,c,perl,tcl :IndentGuidesEnable
-	autocmd FileType python,cpp,c,perl,tcl :ALEEnable
-	autocmd FileType python,cpp :TagbarOpen
+	autocmd FileType python,cpp,c,perl,tcli,shell,bash,zsh :ALEEnable
+	autocmd FileType python,cpp,shell,bash,zsh :TagbarOpen
 "map <F4> :SyntasticToggleMode<CR>
 augroup END
 

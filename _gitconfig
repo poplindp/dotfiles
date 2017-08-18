@@ -12,3 +12,5 @@
 	graph = log --graph --oneline --decorate
 [cola]
 	spellcheck = false
+[gui]
+	recentrepo = /home/diego/Templates/dotfiles
