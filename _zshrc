@@ -1,122 +1,130 @@
+# Vi mode
+bindkey -v
+export EDITOR="vim"
+setopt extendedglob
+setopt nocaseglob
+setopt AUTO_CD
+
+# Language
+export LANG='en_US.UTF-8'
+export LC_ALL='en_US.UTF-8'
+
+# XDG
+export XDG_CONFIG_HOME="$HOME/.config/"
+
+#
+# ZPLUG
+#
 export ZPLUG_HOME=${HOME}/.zplug
 
 # install zplug if required
 if ! [[ -d ${ZPLUG_HOME} ]] then
-	curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
+    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
 fi
 
 # Load zplug (https://github.com/zplug/zplug)
 source ${ZPLUG_HOME}/init.zsh
 
-
 # FIXME: this is not working properly.  Problems with PATH variable (pointing
 # to bin dir with no binaries)  just pull by hand time to time
 # To manage zplug itself like other packages
-# zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+# I will try just forcing ${ZPLUG_HOME} into the path
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 # Plugins to be installed
-zplug "zsh-users/zsh-history-substring-search"
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
+zplug "zdharma/history-search-multi-word"
+zplug "zsh-users/zsh-completions"
+zplug "b4b4r07/enhancd", use:init.sh
+zplug "b4b4r07/zsh-vimode-visual", use:"*.zsh", defer:3
 
-zplug "psprint/history-search-multi-word"
+zplug "zsh-users/zsh-history-substring-search", defer:3
+if zplug check 'zsh-users/zsh-history-substring-search'; then
+    bindkey -M vicmd 'k' history-substring-search-up
+    bindkey -M vicmd 'j' history-substring-search-down
+fi
 
-## Use the package as a command
-## And accept glob patterns (e.g., brace, wildcard, ...)
+zplug 'b4b4r07/zsh-history', as:command, use:misc/fzf-wrapper.zsh, rename-to:ff
+if zplug check 'b4b4r07/zsh-history'; then
+    export ZSH_HISTORY_FILE="$HOME/.zsh_history.db"
+    ZSH_HISTORY_KEYBIND_GET_BY_DIR="^r"
+    ZSH_HISTORY_KEYBIND_GET_ALL="^r^a"
+    ZSH_HISTORY_KEYBIND_SCREEN="^r^r"
+    ZSH_HISTORY_KEYBIND_ARROW_UP="^p"
+    ZSH_HISTORY_KEYBIND_ARROW_DOWN="^n"
+fi
+
+## pack as command and glob patterns (e.g., brace, wildcard, ...)
 zplug "Jxck/dotfiles", as:command, use:"bin/{histuniq,color}"
 
-## Can manage everything e.g., other person's zshrc
-#zplug "tcnksm/docker-alias", use:zshrc
-
-## Disable updates using the "frozen" tag
-#zplug "k4rthik/git-cal", as:command, frozen:1
 zplug "k4rthik/git-cal", as:command
 
-## Grab binaries from GitHub Releases
-## and rename with the "rename-to:" tag
-zplug "junegunn/fzf-bin", \
-    from:gh-r, \
-    as:command, \
-    rename-to:fzf
+# Grab binaries from GitHub Releases and "rename-to:" tag
+zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf, use:"*${(L)$(uname -s)}*amd64*"
+zplug "junegunn/fzf", as:command, use:"bin/fzf-tmux"
+zplug "junegunn/fzf", use:"shell/*.zsh"
+export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border --inline-info'
 
-zplug "junegunn/fzf", use:"bin/fzf-tmux", as:command
+zplug "jhawthorn/fzy", \
+    as:command, \
+    hook-build:"make && sudo make install"
 
 ## Supports oh-my-zsh plugins and the like
-#zplug "plugins/git",   from:oh-my-zsh
+zplug "plugins/git",   from:oh-my-zsh
+zplug "lib/history", from:oh-my-zsh
 
-## Also prezto
-#zplug "modules/prompt", from:prezto
+zplug "tmuxinator/tmuxinator", use:"completion/*.zsh"
 
-## Load if "if" tag returns true
-#zplug "lib/clipboard", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
+# zsh-syntax-highlighting must be loaded after compinit (defer >1)
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
-## Run a command after a plugin is installed/updated
-## Provided, it requires to set the variable like the following:
-## ZPLUG_SUDO_PASSWORD="********"
-#zplug "jhawthorn/fzy", \
-#    as:command, \
-#    rename-to:fzy, \
-#    hook-build:"make && sudo make install"
+zplug "zuxfoucault/colored-man-pages_mod", use:"*.zsh"
 
-## Supports checking out a specific branch/tag/commit
-#zplug "b4b4r07/enhancd", at:v1
-#zplug "mollifier/anyframe", at:4c23cb60
 
-## Can manage gist file just like other packages
-#zplug "b4b4r07/79ee61f7c140c63d2786", \
-#    from:gist, \
-#    as:command, \
-#    use:get_last_pane_path.sh
+#zplug "unixorn/warhol.plugin.zsh", use:"*.zsh"
+#zplug "zpm-zsh/dropbox"
 
-## Support bitbucket
-#zplug "b4b4r07/hello_bitbucket", \
-#    from:bitbucket, \
-#    as:command, \
-#    use:"*.sh"
-
-## Rename a command with the string captured with `use` tag
-#zplug "b4b4r07/httpstat", \
-#    as:command, \
-#    use:'(*).sh', \
-#    rename-to:'$1'
-
-## Group dependencies
-## Load "emoji-cli" if "jq" is installed in this example
-#zplug "stedolan/jq", \
-#    from:gh-r, \
-#    as:command, \
-#    rename-to:jq
-#zplug "b4b4r07/emoji-cli", \
-#    on:"stedolan/jq"
-## Note: To specify the order in which packages should be loaded, use the defer
-##       tag described in the next section
-
-## Set the priority when loading
-## e.g., zsh-syntax-highlighting must be loaded
-## after executing compinit command and sourcing other plugins
-## (If the defer tag is given 2 or above, run after compinit command)
-#zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "bobsoppe/zsh-ssh-agent", use:ssh-agent.zsh, from:github
+zplug "MichaelAquilina/zsh-you-should-use"
 
 # Can manage local plugins
-# zplug "~/.zsh", from:local
+zplug "~/.zsh", from:local, if:"[[ -d $HOME/.zsh ]]"
 
 # Load theme file
 #zplug 'dracula/zsh', as:theme
 #zplug 'eendroroy/alien', as:theme
-zplug "sindresorhus/pure", use:"*.zsh", as:theme
-#zplug "arialdomartini/oh-my-git", use:"*.sh"
-#zplug "arialdomartini/oh-my-git-themes", as:theme
+#zplug "sindresorhus/pure", use:"*.zsh", as:theme
+zplug 'denysdovhan/spaceship-zsh-theme', as:theme
+
+zplug "escalate/oh-my-zsh-proxy-plugin", if:"[[ -f $HOME/.proxy/http_proxy ]]"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read -q; then
-        echo; zplug install
+	echo; zplug install
     fi
 fi
 
-# Then, source plugins and add commands to $PATH
-zplug load --verbose
-#zplug load
+#
+# End ZPLUG
+#
 
-set -o vi
+
+# AT THE VERY END
+# Then, source plugins and add commands to $PATH
+#zplug load --verbose
+zplug load
+
+
+### Overide some variables
+#
+HISTSIZE=30000
+SAVEHIST=30000
+
+PATH=${ZPLUG_HOME}/bin:${HOME}/.local/bin:${PATH}
+PYTHONPATH=${PYTHONPATH}:$HOME/.local/lib/python/site-packages:$HOME/.local/lib/python2/site-packages
+LD_LIBRARY_PATH=${HOME}/.local/lib:${LD_LIBRARY_PATH}
+export PATH
+export PYTHONPATH
+export LD_LIBRARY_PATH
