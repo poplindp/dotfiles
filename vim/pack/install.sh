@@ -119,5 +119,51 @@ wait
 
 wait
 
+#'tpope/vim-sensible'
+#'Lokaltog/vim-easymotion'
+#'mhinz/vim-startify'
+#'altercation/vim-colors-solarized'
+#'sjl/gundo.vim' ", { 'on': 'GundoToggle' }
+#'~/.zplug/repos/junegunn/fzf' | Plug 'junegunn/fzf.vim'
+#'junegunn/fzf', { 'do': 'yes \| ./install' }
+#'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
+#'scrooloose/nerdcommenter'
+#'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+#'Xuyuanp/nerdtree-git-plugin'
+#'ryanoasis/vim-devicons'
+#'jlanzarotta/bufexplorer'
+#'tpope/vim-unimpaired'
+#'whatyouhide/vim-lengthmatters'
+#'jiangmiao/auto-pairs'
+#'junegunn/rainbow_parentheses.vim', { 'on':  'RainbowParentheses' }
+#'pgdouyon/vim-evanesco'
+#'djoshea/vim-autoread'
+#'thaerkh/vim-workspace'
+#'dietsche/vim-lastplace'
+#'mhinz/vim-sayonara', { 'on': 'Sayonara' }
+#
+#'SirVer/ultisnips', { 'for': ['c', 'c++', 'perl', 'tcl', 'python'] }
+#lug 'honza/vim-snippets', { 'for': ['c', 'c++', 'perl', 'tcl', 'python'] } " Snippets are separated from the engine. vim-snippets are required
+#'Valloric/YouCompleteMe', { 'do': './install.py' } " Compile it with python2 install.py
+#'w0rp/ale'
+#'fs111/pydoc.vim', { 'for': 'python' }
+#'python-mode/python-mode', { 'for': 'python' }
+#'nathanaelkane/vim-indent-guides', { 'for': ['c', 'c++', 'perl', 'tcl', 'python', 'bash', 'zsh'] }
+#'majutsushi/tagbar', { 'for': ['c++', 'python', 'bash', 'zsh'] }
+#'Valloric/vim-operator-highlight'
+#'skywind3000/asyncrun.vim'
+#
+#'tpope/vim-fugitive'
+#'airblade/vim-gitgutter'
+#
+#'christoomey/vim-tmux-navigator'
+#
+#'tmux-plugins/vim-tmux'
+#'zplug/vim-zplug'
+#'chrisbra/vim-zsh'
+#'tpope/vim-sleuth'
+
+
+
 # echo "Plugins that havn't been updated by this script:"
 find */*/*/.git -prune -mtime 0.01
