@@ -20,7 +20,13 @@ highlight DiffDelete ctermbg=233
 " Modified lines are dark grey
 highlight DiffChange ctermbg=233
 " Modified words are a slightly lighter grey
-zighlight DiffText ctermbg=236
+highlight DiffText ctermbg=236
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_powerline_fonts = 1
+
 " }}}
 
 " Buffer Options {{{

@@ -98,6 +98,12 @@ wait
 ) &
 
 (
+set_group git
+package jreybert/vimagit.git &
+wait
+) &
+
+(
 set_group syntax
 package kchmck/vim-coffee-script.git &
 package tpope/vim-markdown.git &
@@ -116,6 +122,7 @@ wait
 set_group colorschemes
 package altercation/vim-colors-solarized.git &
 package vim-airline/vim-airline.git &
+package vim-airline/vim-airline-themes.git &
 wait
 ) &
 
