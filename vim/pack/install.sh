@@ -31,11 +31,11 @@ function set_group_opt () {
 #   package https://github.com/tpope/vim-endwise.git
 #
 function package () {
+  repo_url=$1
   if [[ "$repo_url" != http* ]]
   then
     repo_url="https://github.com/${repo_url}"
   fi
-  repo_url=$1
   expected_repo=$(basename "$repo_url" .git)
   if [ -d "$expected_repo" ]; then
     cd "$expected_repo" || exit
@@ -87,6 +87,7 @@ package tomtom/tlib_vim.git &
 package garbas/vim-snipmate.git &
 # Ultisnips is python but more functional
 package SirVer/ultisnips.git &
+package ajh17/VimCompletesMe.git &
 wait
 ) &
 
@@ -114,6 +115,7 @@ wait
 (
 set_group colorschemes
 package altercation/vim-colors-solarized.git &
+package vim-airline/vim-airline.git &
 wait
 ) &
 
