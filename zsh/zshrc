@@ -59,15 +59,15 @@ zplug "Jxck/dotfiles", as:command, use:"bin/{histuniq,color}"
 zplug "k4rthik/git-cal", as:command
 
 # Grab binaries from GitHub Releases and "rename-to:" tag
-#zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf, use:"*${(L)$(uname -s)}*amd64*"
+# zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf, use:"*${(L)$(uname -s)}*amd64*"
 #zplug "junegunn/fzf", as:command, use:"bin/fzf-tmux"
 zplug "junegunn/fzf", use:"shell/*.zsh"
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border --inline-info'
 
-zplug "jhawthorn/fzy", \
-    as:command, \
-    hook-build:"make && sudo make install"
+#zplug "jhawthorn/fzy", \
+#    as:command, \
+#    hook-build:"make && sudo make install"
 
 ## Supports oh-my-zsh plugins and the like
 zplug "plugins/git",   from:oh-my-zsh
@@ -116,6 +116,8 @@ fi
 #zplug load --verbose
 zplug load
 
+#if proxy file is there just execture proxy
+[[ -f $HOME/.proxy/http_proxy ]] && proxy
 
 ### Overide some variables
 #
