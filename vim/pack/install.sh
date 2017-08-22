@@ -100,6 +100,8 @@ wait
 (
 set_group git
 package jreybert/vimagit.git &
+package tpope/vim-fugitive &
+package airblade/vim-gitgutter &
 wait
 ) &
 
@@ -126,6 +128,14 @@ package vim-airline/vim-airline-themes.git &
 wait
 ) &
 
+(
+set_group search
+package junegunn/fzf.vim &
+wait
+)
+
+
+
 wait
 
 #'tpope/vim-sensible'
@@ -133,9 +143,6 @@ wait
 #'mhinz/vim-startify'
 #'altercation/vim-colors-solarized'
 #'sjl/gundo.vim' ", { 'on': 'GundoToggle' }
-#'~/.zplug/repos/junegunn/fzf' | Plug 'junegunn/fzf.vim'
-#'junegunn/fzf', { 'do': 'yes \| ./install' }
-#'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 #'scrooloose/nerdcommenter'
 #'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 #'Xuyuanp/nerdtree-git-plugin'
@@ -161,9 +168,6 @@ wait
 #'majutsushi/tagbar', { 'for': ['c++', 'python', 'bash', 'zsh'] }
 #'Valloric/vim-operator-highlight'
 #'skywind3000/asyncrun.vim'
-#
-#'tpope/vim-fugitive'
-#'airblade/vim-gitgutter'
 #
 #'christoomey/vim-tmux-navigator'
 #
