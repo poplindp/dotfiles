@@ -127,18 +127,25 @@
 URxvt*termName: rxvt-unicode-256color
 
 !! FONTS
-! SauceCodePro Nerd Font
-#define fonts xft:SauceCodePro Nerd Font:size=12,:pixelsize=18:antialias=tru
-! InconsolataForPowerline Nerd
+! Nerd Fonts
+#define fonts xft:SauceCodePro Nerd Font:size=12:pixelsize=16:antialias=true:hinting=true
+!#define fonts xft:DejaVuSansMonoForPowerline Nerd Font:size=12:pixelsize=18:antialias=true:hinting=true
 !#define fonts xft:InconsolataForPowerline Nerd Font:size=12,:pixelsize=18:antialias=true
-! Source Code Pro Setup 
+! Powerline symbols Fonts
 !#define fonts xft:Source\ Code\ Pro:size=12,:pixelsize=18:antialias=true
 URxvt.allow_bold:           true
+URxvt.allow_italic:           true
 URxvt*font: fonts:regular
 URxvt*imFont: fonts:regular
 URxvt*boldFont: fonts:semibold
 URxvt*italicFont: fonts:italic
 URxvt*boldItalicFont: fonts:semibold:italic
+!
+!URxvt*font: xft:SauceCodePro Nerd Font:size=12:regular:pixelsize=18:antialias=true:hinting=true
+!URxvt*imFont: xft:SauceCodePro Nerd Font:size=12:regular:pixelsize=18:antialias=true:hinting=true
+!URxvt*boldFont: xft:SauceCodePro Nerd Font:size=12:semibold:pixelsize=18:antialias=true:hinting=true
+!URxvt*italicFont: xft:SauceCodePro Nerd Font:size=12:italic:pixelsize=18:antialias=true:hinting=true
+!URxvt*boldItalicFont: xft:SauceCodePro Nerd Font:size=12:semibold:italic:pixelsize=18:antialias=true:hinting=true
 
 ! Source Code Pro Setup
 /*URxvt.allow_bold:           true

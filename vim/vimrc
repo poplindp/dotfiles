@@ -190,7 +190,7 @@ set t_Co=256
 "    set background=dark
 "endif
 "colorscheme solarized
-"highlight Comment cterm=italic
+highlight Comment cterm=italic
 "
 "" nerdtree
 "let g:NERDTreeWinPos = "right"

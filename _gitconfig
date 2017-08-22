@@ -14,3 +14,5 @@
 	spellcheck = false
 [gui]
 	recentrepo = /home/diego/Templates/dotfiles
+[credential]
+	helper = cache --timeout=3600
