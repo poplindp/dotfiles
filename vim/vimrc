@@ -342,10 +342,6 @@ highlight Comment cterm=italic
 ""map <silent> <F10> USED by exec
 "set pastetoggle=<F12>
 "
-"nnoremap <localleader>s :ToggleWorkspace<CR>
-"" }}}
-
-" From the talk https://www.youtube.com/watch?v=XA2WjJbmmoM
 
 " Recursivly add all files and folders to the path
 set path+=**
