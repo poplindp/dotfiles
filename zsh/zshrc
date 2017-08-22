@@ -43,15 +43,15 @@ if zplug check 'zsh-users/zsh-history-substring-search'; then
     bindkey -M vicmd 'j' history-substring-search-down
 fi
 
-zplug 'b4b4r07/zsh-history', as:command, use:misc/fzf-wrapper.zsh, rename-to:ff
-if zplug check 'b4b4r07/zsh-history'; then
-    export ZSH_HISTORY_FILE="$HOME/.zsh_history.db"
-    ZSH_HISTORY_KEYBIND_GET_BY_DIR="^r"
-    ZSH_HISTORY_KEYBIND_GET_ALL="^r^a"
-    ZSH_HISTORY_KEYBIND_SCREEN="^r^r"
-    ZSH_HISTORY_KEYBIND_ARROW_UP="^p"
-    ZSH_HISTORY_KEYBIND_ARROW_DOWN="^n"
-fi
+#zplug 'b4b4r07/zsh-history', as:command, use:misc/fzf-wrapper.zsh, rename-to:ff
+#if zplug check 'b4b4r07/zsh-history'; then
+#    export ZSH_HISTORY_FILE="$HOME/.zsh_history.db"
+#    ZSH_HISTORY_KEYBIND_GET_BY_DIR="^r"
+#    ZSH_HISTORY_KEYBIND_GET_ALL="^r^a"
+#    ZSH_HISTORY_KEYBIND_SCREEN="^r^r"
+#    ZSH_HISTORY_KEYBIND_ARROW_UP="^p"
+#    ZSH_HISTORY_KEYBIND_ARROW_DOWN="^n"
+#fi
 
 ## pack as command and glob patterns (e.g., brace, wildcard, ...)
 zplug "Jxck/dotfiles", as:command, use:"bin/{histuniq,color}"
