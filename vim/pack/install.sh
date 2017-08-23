@@ -70,14 +70,12 @@ package tpope/vim-projectionist.git &
 wait
 ) &
 
-# (
-# set_group ruby
-# package tpope/vim-rails.git &
-# package tpope/vim-rake.git &
-# package tpope/vim-bundler.git &
-# package tpope/vim-endwise.git &
-# wait
-# ) &
+(
+set_group python
+package fisadev/vim-isort &
+package majutsushi/tagbar &
+wait
+) &
 
 (
 set_group snippets
@@ -116,13 +114,14 @@ package tmux-plugins/vim-tmux.git &
 package Matt-Deacalion/vim-systemd-syntax.git &
 package salomvary/vim-eslint-compiler.git &
 package hashivim/vim-terraform.git &
+package w0rp/ale &
 wait
 ) &
 
 
 (
 set_group colorschemes
-package altercation/vim-colors-solarized.git &
+#package altercation/vim-colors-solarized.git &
 package vim-airline/vim-airline.git &
 package vim-airline/vim-airline-themes.git &
 wait
@@ -134,18 +133,19 @@ package junegunn/fzf.vim &
 wait
 )
 
-
+(set_group edition
+package scrooloose/nerdcommenter &
+package scrooloose/nerdtree &
+package Xuyuanp/nerdtree-git-plugin &
+wait
+)
 
 wait
 
 #'tpope/vim-sensible'
 #'Lokaltog/vim-easymotion'
 #'mhinz/vim-startify'
-#'altercation/vim-colors-solarized'
 #'sjl/gundo.vim' ", { 'on': 'GundoToggle' }
-#'scrooloose/nerdcommenter'
-#'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-#'Xuyuanp/nerdtree-git-plugin'
 #'ryanoasis/vim-devicons'
 #'jlanzarotta/bufexplorer'
 #'tpope/vim-unimpaired'
@@ -161,11 +161,9 @@ wait
 #'SirVer/ultisnips', { 'for': ['c', 'c++', 'perl', 'tcl', 'python'] }
 #lug 'honza/vim-snippets', { 'for': ['c', 'c++', 'perl', 'tcl', 'python'] } " Snippets are separated from the engine. vim-snippets are required
 #'Valloric/YouCompleteMe', { 'do': './install.py' } " Compile it with python2 install.py
-#'w0rp/ale'
 #'fs111/pydoc.vim', { 'for': 'python' }
 #'python-mode/python-mode', { 'for': 'python' }
 #'nathanaelkane/vim-indent-guides', { 'for': ['c', 'c++', 'perl', 'tcl', 'python', 'bash', 'zsh'] }
-#'majutsushi/tagbar', { 'for': ['c++', 'python', 'bash', 'zsh'] }
 #'Valloric/vim-operator-highlight'
 #'skywind3000/asyncrun.vim'
 #
