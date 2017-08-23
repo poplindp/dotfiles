@@ -74,6 +74,7 @@ wait
 set_group python
 package fisadev/vim-isort &
 package majutsushi/tagbar &
+package nathanaelkane/vim-indent-guides &
 wait
 ) &
 
@@ -163,7 +164,6 @@ wait
 #'Valloric/YouCompleteMe', { 'do': './install.py' } " Compile it with python2 install.py
 #'fs111/pydoc.vim', { 'for': 'python' }
 #'python-mode/python-mode', { 'for': 'python' }
-#'nathanaelkane/vim-indent-guides', { 'for': ['c', 'c++', 'perl', 'tcl', 'python', 'bash', 'zsh'] }
 #'Valloric/vim-operator-highlight'
 #'skywind3000/asyncrun.vim'
 #

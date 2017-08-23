@@ -42,18 +42,6 @@ set smarttab
 filetype indent plugin on
 set autoindent
 
-" not for python
-au BufNewFile,BufRead *.py
-      \ set tabstop=4
-      \ set softtabstop=4
-      \ set shiftwidth=4
-      \ set textwidth=79
-      \ set expandtab
-      \ set autoindent
-      \ set fileformat=unix
-
-" }}}
-
 " Editing and text display {{{
 set backspace=indent,eol,start
 " set showmatch
