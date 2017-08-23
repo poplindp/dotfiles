@@ -93,6 +93,7 @@ wait
 (
 set_group tmux
 package christoomey/vim-tmux-navigator.git &
+package keith/tmux.vim &
 wait
 ) &
 
@@ -127,6 +128,14 @@ package vim-airline/vim-airline.git &
 package vim-airline/vim-airline-themes.git &
 wait
 ) &
+
+(
+set_group basic
+package chrisbra/changesPlugin &
+package chrisbra/vim-diff-enhanced &
+wait
+) &
+
 
 (
 set_group search

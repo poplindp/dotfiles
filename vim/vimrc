@@ -41,6 +41,7 @@ set ts=2 sw=2 expandtab
 set smarttab
 filetype indent plugin on
 set autoindent
+" }}}
 
 " Editing and text display {{{
 set backspace=indent,eol,start
@@ -91,6 +92,31 @@ endif
 set complete=.,b,u,]
 set wildmode=longest,list:longest
 set completeopt=menu,preview
+
+" After this: ALEFix will only try and fix your JS code with ESLint.
+" By default all possible linters will be run
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+
+" No default here... better to define it
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\   'python': ['add_blank_lines_for_python_control_statements','autopep8', 'isort', 'yapf', 'remove_trailing_lines'],
+\}
+"\   'python': ['add_blank_lines_for_python_control_statements','autopep8', 'flake8', 'isort', 'mypy', 'pylint', 'yapf', 'remove_trailing_lines'],
+
+" Set this setting in vimrc if you want to fix files automatically on save.
+" This is off by default.
+let g:ale_fix_on_save = 0
+
+" Enable fixers
+" Enable completion where available.
+let g:ale_completion_enabled = 1
+
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+
 " }}}
 
 " Swap files {{{
@@ -308,8 +334,8 @@ augroup programming_files
   autocmd FileType python,cpp,c,perl,tcl nnoremap <F10> :call <SID>compile_and_run()<CR>
   "autocmd FileType python nnoremap <buffer> <F10> :exec '!python' shellescape(@%, 1)<cr>
   autocmd FileType python,cpp,c,perl,tcl :IndentGuidesEnable
-  autocmd FileType python,cpp,c,perl,tcli,shell,bash,zsh :ALEEnable
-  autocmd FileType python,cpp,shell,bash,zsh :TagbarOpen
+  autocmd FileType python,cpp,c,perl,tcli,shell,bash,zsh,vim :ALEEnable
+  autocmd FileType python,cpp,shell,bash,zsh,vim :TagbarOpen
   "map <F4> :SyntasticToggleMode<CR>
 augroup END
 
