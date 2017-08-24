@@ -1,0 +1,71 @@
+# ~/.tmuxinator/Culgi_plots.yml
+
+name: Culgi_Plots
+root: /home/diego/VBoxSharedFolder/Culgi_DAP/Solubility/SingleMolFitting2016/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: logs
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+# Runs after everything. Use it to attach to tmux with custom options etc.
+# post: tmux -CC attach -t Culgi
+
+windows:
+  - Solubility_2017:
+      root: /home/diego/VBoxSharedFolder/Culgi_DAP/Solubility/Solubility_2017
+      layout: main-vertical
+      panes:
+        - vim -p /home/diego/.local/lib/python/site-packages/culgi_dap/culgi_ts.py
+        - 
+        - ipython3 --profile=sc --pylab
+        - jupyter-notebook
+  - Solub_old:
+      root: /home/diego/Work/Solubility_2016/God_v3_multimap
+      layout: main-vertical
+      panes:
+        - vim -p /home/diego/.local/lib/python/site-packages/culgi_dap/culgi_ts.py
+        - 
+        - ipython3 --profile=sc --pylab
+        - 
+  - Histograms:
+      root: /home/diego/Work/Solubility_2016
+      layout: main-vertical
+      panes:
+        - vim -p /home/diego/.local/lib/python/site-packages/culgi_dap/culgi_histo.py
+        - 
+        - ipython3 --profile=sc --pylab
+          # - cd /home/diego/.local/lib/python/site-packages/culgi_dap
+  - Cuadratic:
+      root: /home/diego/VBoxSharedFolder/Culgi_DAP/Solubility/SingleMolFitting2016/cuadratic_fit
+      layout: main-vertical
+      panes:
+        - vim -p *.py
+        - ssh sgi_r
+        - ipython3 --profile=sc
+  - Tables:
+      root: /home/diego/Work/Culgi_Analysis/Time_Series
+      layout: main-vertical
+      panes:
+              #- vim -p /home/diego/.local/lib/python/site-packages/culgi_dap/culgi_ts.py
+        - 
+        - ipython3 --profile=sc --pylab
+          # - cd /home/diego/.local/lib/python/site-packages/culgi_dap
+#  - server: bundle exec rails s
+#  - logs: tail -f log/development.log
