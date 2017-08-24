@@ -1,0 +1,42 @@
+# ~/.tmuxinator/dev.yml
+
+name: dev # the tmux session's name
+root: /path/to/repo # path to the root dir for all panes
+
+# Definition of all windows. Each window has a name, potentially a layout and
+# one or more panes. Each pane runs none or one command.
+windows:
+  - git:
+      layout: tiled
+      panes:
+        - wtig
+        - htop
+        - git status
+        - ls
+  - mgmnt:
+      layout: tiled
+      panes:
+        - ranger
+        - $EDITOR ~/.alias.local
+  - edit:
+      layout: main-vertical
+      panes:
+        - $EDITOR
+  - exec:
+      layout: tiled
+      panes:
+        -
+        -
+        -
+        -
+  - scratch:
+      layout: tiled
+      panes:
+        - ipython
+        - irb
+        - ghci
+        - bc
+  - ssh:
+      panes:
+        - ssh diego@sgi_r
+        - ssh diego@spqr
