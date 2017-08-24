@@ -380,4 +380,3 @@ set ttymouse=xterm2
 
 set clipboard=unnamedplus
 " set clipboard=unnamed
-"
