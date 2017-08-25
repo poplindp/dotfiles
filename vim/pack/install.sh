@@ -94,6 +94,10 @@ wait
 set_group tmux
 package christoomey/vim-tmux-navigator.git &
 package keith/tmux.vim &
+#'tmux-plugins/vim-tmux-focus-events'
+#'christoomey/vim-tmux-navigator'
+#
+#'tmux-plugins/vim-tmux'
 wait
 ) &
 
@@ -176,9 +180,6 @@ wait
 #'Valloric/vim-operator-highlight'
 #'skywind3000/asyncrun.vim'
 #
-#'christoomey/vim-tmux-navigator'
-#
-#'tmux-plugins/vim-tmux'
 #'zplug/vim-zplug'
 #'chrisbra/vim-zsh'
 #'tpope/vim-sleuth'
