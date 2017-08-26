@@ -34,6 +34,7 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 zplug "zsh-users/zsh-completions"
 zplug "b4b4r07/enhancd", use:init.sh
+zplug "plugins/archlinux", from:oh-my-zsh, if:"[[ -f /etc/arch-release ]]"
 
 zplug "lib/history", from:oh-my-zsh
 zplug "zdharma/history-search-multi-word"
