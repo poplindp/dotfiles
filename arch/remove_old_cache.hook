@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Remove
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = *
+
+[Action]
+Description = Keep the last 2 cache packages (paccache -rqk2)
+When = PostTransaction
+Exec = /usr/bin/paccache -rqk2
