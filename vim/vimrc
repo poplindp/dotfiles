@@ -1,10 +1,15 @@
 " vim:fdm=marker
-set nocompatible
+"set nocompatible
 filetype plugin indent on
+
+let g:mapleader = ','  "sets up the leader for all maps
+let g:maplocalleader = '\\' "a prefix for mappings that only take effect for certain types of files
 
 " GUI options {{{
 set number
+set relativenumber
 syntax enable
+highlight Comment cterm=italic
 
 " colorscheme solarized
 set background=dark
@@ -37,7 +42,7 @@ let g:airline_powerline_fonts = 1
 " Formatting and indentation {{{
 " Use spaces instead of tabs
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-set ts=2 sw=2 expandtab
+set tabstop=2 sw=2 expandtab
 set smarttab
 filetype indent plugin on
 set autoindent
@@ -83,39 +88,17 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor\ --column\ $*
   set grepformat=%f:%l:%c:%m"
   " If this is a git directory, use git's grep
-elseif !empty(system("git rev-parse --show-toplevel"))
+elseif !empty(system('git rev-parse --show-toplevel'))
   set grepprg=git\ grep\ --line-number\ $*
 endif
 " }}}
 
 " Autocomplete {{{
 set complete=.,b,u,]
+"set complete=.,w,b,u,],U,t,i,d,kspell  "Scanning tags msg??? too slow??
 set wildmode=longest,list:longest
 set completeopt=menu,preview
 
-" After this: ALEFix will only try and fix your JS code with ESLint.
-" By default all possible linters will be run
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\}
-
-" No default here... better to define it
-let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\   'python': ['add_blank_lines_for_python_control_statements','autopep8', 'isort', 'yapf', 'remove_trailing_lines'],
-\}
-"\   'python': ['add_blank_lines_for_python_control_statements','autopep8', 'flake8', 'isort', 'mypy', 'pylint', 'yapf', 'remove_trailing_lines'],
-
-" Set this setting in vimrc if you want to fix files automatically on save.
-" This is off by default.
-let g:ale_fix_on_save = 0
-
-" Enable fixers
-" Enable completion where available.
-let g:ale_completion_enabled = 1
-
-" Set this. Airline will handle the rest.
-let g:airline#extensions#ale#enabled = 1
 
 " }}}
 
@@ -130,15 +113,15 @@ let g:airline#extensions#ale#enabled = 1
 let g:html_number_lines = 1
 " let g:html_dynamic_folds = 0
 " let g:html_no_foldcolumn = 1
-let g:html_prevent_copy = "n"
+let g:html_prevent_copy = 'n'
 " }}}
 
 " Undo {{{
 set undolevels=10000
-" if has("persistent_undo")
-set undodir=~/.vim/undo " Allow undoes to persist even after a file is closed
-set undofile
-" endif
+if has('persistent_undo')
+  set undodir=~/.vim/undo " Allow undoes to persist even after a file is closed
+  set undofile
+endif
 " }}}
 
 " set clipboard+=unnamed
@@ -146,92 +129,108 @@ set undofile
 " entire word of 'this-is-hyphened'
 set iskeyword+=-
 
-" Previous Diego's config {{{
+" PLUGINS {{{
 
-let mapleader = ","  "sets up the leader for all maps
-let maplocalleader = "\\" "a prefix for mappings that only take effect for certain types of files
+" neocomplete / neosnippets {{{
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-let $PYTHONPATH='/usr/lib/python3.6/site-packages'
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
-set encoding=utf-8
-set anti enc=utf-8
-set guifont=InconsolataForPowerline\ Nerd\ Font\ 12
-set laststatus=2 " Always display the statusline in all windows
-set showtabline=2 " Always display the tabline, even if there is only one tab
-set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-set number
-set cursorline
-set colorcolumn=80
-set showbreak=↪
-set t_Co=256
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 
-" Spell Check
-let b:myLang=0
-let g:myLangList=["nospell","en","fr","it","es"]
-function! ToggleSpell()
-  let b:myLang=b:myLang+1
-  if b:myLang>=len(g:myLangList) | let b:myLang=0 | endif
-  if b:myLang==0
-    setlocal nospell
-  else
-    execute "setlocal spell spelllang=".get(g:myLangList, b:myLang)
-  endif
-  echo "spell checking language:" g:myLangList[b:myLang]
-endfunction
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 0
 
-" autoreload vimrc
-augroup reload_vimrc " {
-  autocmd!
-  autocmd BufWritePost $MYVIMRC source $MYVIMRC
-augroup END " }
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/pack/completion/start/vim-snippets/snippets/'
+let g:neosnippet#snippets_directory='~/.vim/pack/completion/start/vim-snippets/UltiSnips/'
 
+" }}}
 
-""""""""""""""""""""""""""""
-"" Plugins configuration
-""""""""""""""""""""""""""""
-"
-"" vim-easymotion
+" vim-easymotion {{{
 "map <Tab> <Plug>(easymotion-prefix)
-"
-"" vim-colors-solarized
+
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap <Leader> s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+" }}}
+
+" vim-colors-solarized {{{
 "let g:solarized_termcolors= 16 	" 16 | 256,  256 degrades colors
 "let g:solarized_termtrans = 0 	" 0 | 1
 "let g:solarized_degrade = 0	" 0 | 1
 "let g:solarized_bold = 1	" 1 | 0
 "let g:solarized_underline = 1	" 1 | 0
 "let g:solarized_italic = 1	" 1 | 0
-"let g:solarized_contrast = "normal" 	" "normal"| "high" or "low"
-"let g:solarized_visibility= "normal"	" "normal"| "high" or "low"
+"let g:solarized_contrast = 'normal' 	" "normal"| "high" or "low"
+"let g:solarized_visibility= 'normal'	" "normal"| "high" or "low"
 if has('gui_running')
   set background=light
 else
   set background=dark
 endif
-"colorscheme solarized
-highlight Comment cterm=italic
-"
-" nerdtree
-let g:NERDTreeWinPos = "right"
+" }}}
+
+" nerdtree / newtr {{{
+let g:NERDTreeWinPos = 'right'
 let g:NERDTreeDirArrows=1
 "autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+"" nerdtree-like newtr
+"let g:netrw_banner = 0
+"let g:netrw_liststyle = 3
+"let g:netrw_browse_split = 4
+"let g:netrw_altv = 1
+"let g:netrw_winsize = 25
+"augroup ProjectDrawer
+"  autocmd!
+"  autocmd VimEnter * :Vexplore
+"augroup END
+" }}}
 
-" vim-devicons
+" vim-devicons {{{
 let g:NERDTreeIndicatorMapCustom = {
-      \ "Modified"  : "✹",
-      \ "Staged"    : "✚",
-      \ "Untracked" : "✭",
-      \ "Renamed"   : "➜",
-      \ "Unmerged"  : "═",
-      \ "Deleted"   : "✖",
-      \ "Dirty"     : "✗",
-      \ "Clean"     : "✔︎",
+      \ 'Modified'  : '✹',
+      \ 'Staged'    : '✚',
+      \ 'Untracked' : '✭',
+      \ 'Renamed'   : '➜',
+      \ 'Unmerged'  : '═',
+      \ 'Deleted'   : '✖',
+      \ 'Dirty'     : '✗',
+      \ 'Clean'     : '✔︎',
       \ 'Ignored'   : '☒',
-      \ "Unknown"   : "?"
+      \ 'Unknown'   : '?'
       \ }
+" }}}
 
-"" YouCompleteMe
+" YouCompleteMe {{{
 "augroup load_us_ycm
 "	autocmd!
 "	autocmd InsertEnter * call plug#load('ultisnips', 'vim-snippets', 'YouCompleteMe')
@@ -250,8 +249,9 @@ let g:NERDTreeIndicatorMapCustom = {
 "let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 "" If you want :UltiSnipsEdit to split your window.
 "let g:UltiSnipsEditSplit="vertical"
-"
-""" syntastic
+" }}}
+
+" syntastic {{{
 ""set statusline+=%#warningmsg#
 ""set statusline+=%{SyntasticStatuslineFlag()}
 ""set statusline+=%*
@@ -260,8 +260,9 @@ let g:NERDTreeIndicatorMapCustom = {
 ""let g:syntastic_auto_loc_list = 1
 ""let g:syntastic_check_on_open = 1
 ""let g:syntastic_check_on_wq = 0
-"
-" ale (replace syntastic and flake8 in vim8)
+" }}}
+
+" ale (replace syntastic and flake9 in vim8) {{{
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
@@ -269,31 +270,96 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
+" After this: ALEFix will only try and fix your JS code with ESLint.
+" By default all possible linters will be run
+let g:ale_linters = {
+      \   'javascript': ['eslint'],
+      \}
 
-"" python-mode (do not erase .ropeproject directory)
-"let g:pymode_python = 'python3'
-"let g:pymode_options = 1
-"
-"" Gundo
-"let g:gundo_prefer_python3 = 1
-"
-" vim-fugitive
+" No default here... better to define it
+let g:ale_fixers = {
+      \   'javascript': ['eslint'],
+      \   'python': ['add_blank_lines_for_python_control_statements','autopep8', 'isort', 'yapf', 'remove_trailing_lines'],
+      \}
+"\   'python': ['add_blank_lines_for_python_control_statements','autopep8',
+"'flake8', 'isort', 'mypy', 'pylint', 'yapf', 'remove_trailing_lines'],
+
+" Set this setting in vimrc if you want to fix files automatically on save.
+" This is off by default.
+let g:ale_fix_on_save = 0
+
+" Enable fixers
+" Enable completion where available.
+let g:ale_completion_enabled = 1
+
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+
+" }}}
+
+" vim-fugitive {{{
 augroup fugitive
   autocmd!
   autocmd BufReadPost fugitive://* set bufhidden=delete
   set diffopt+=vertical
 augroup END
+" }}}
 
-" vim-indent-guides
+" vim-indent-guides {{{
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
+" }}}
 
-"" vim-lastplace
+"" vim-lastplace {{{
 "let g:lastplace_ignore = "gitcommit,svn"
-"
-"" vim-workspace
+" }}}
+
+"" vim-workspace {{{
 "let g:workspace_session_name = 'Session.vim'
-"
+" k}}
+
+
+" }}}
+
+" Previous Diego's config {{{
+
+
+let $PYTHONPATH='/usr/lib/python3.6/site-packages'
+
+set encoding=utf-8
+set antialias enc=utf-8
+set guifont=InconsolataForPowerline\ Nerd\ Font\ 12
+set laststatus=2 " Always display the statusline in all windows
+set showtabline=2 " Always display the tabline, even if there is only one tab
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+set number
+set cursorline
+set colorcolumn=80
+set showbreak=↪
+set t_Co=256
+
+" Spell Check
+let b:myLang=0
+let g:myLangList=['nospell','en','fr','it','es']
+function! ToggleSpell()
+  let b:myLang=b:myLang+1
+  if b:myLang>=len(g:myLangList) | let b:myLang=0 | endif
+  if b:myLang==0
+    setlocal nospell
+  else
+    execute 'setlocal spell spelllang='.get(g:myLangList, b:myLang)
+  endif
+  echo 'spell checking language:' g:myLangList[b:myLang]
+endfunction
+
+" autoreload vimrc
+augroup reload_vimrc " {
+  autocmd!
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
+
+
+
 "
 ""
 "" Functions
