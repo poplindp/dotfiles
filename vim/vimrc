@@ -1,5 +1,5 @@
 " vim:fdm=marker
-"set nocompatible
+set nocompatible
 filetype plugin indent on
 
 let g:mapleader = ','  "sets up the leader for all maps
@@ -165,20 +165,20 @@ let g:neosnippet#snippets_directory='~/.vim/pack/completion/start/vim-snippets/U
 " vim-easymotion {{{
 "map <Tab> <Plug>(easymotion-prefix)
 
-" <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
+"" <Leader>f{char} to move to {char}
+"map  <Leader>f <Plug>(easymotion-bd-f)
+"nmap <Leader>f <Plug>(easymotion-overwin-f)
 
-" s{char}{char} to move to {char}{char}
-nmap <Leader> s <Plug>(easymotion-overwin-f2)
+"" s{char}{char} to move to {char}{char}
+"nmap <Leader> s <Plug>(easymotion-overwin-f2)
 
-" Move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
+"" Move to line
+"map <Leader>L <Plug>(easymotion-bd-jk)
+"nmap <Leader>L <Plug>(easymotion-overwin-line)
 
-" Move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
+"" Move to word
+"map  <Leader>w <Plug>(easymotion-bd-w)
+"nmap <Leader>w <Plug>(easymotion-overwin-w)
 " }}}
 
 " vim-colors-solarized {{{
@@ -290,7 +290,7 @@ let g:ale_fix_on_save = 0
 
 " Enable fixers
 " Enable completion where available.
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
@@ -358,7 +358,7 @@ augroup reload_vimrc " {
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
 
-
+" }}}
 
 "
 ""
@@ -400,7 +400,8 @@ augroup programming_files
   autocmd FileType python,cpp,c,perl,tcl nnoremap <F10> :call <SID>compile_and_run()<CR>
   "autocmd FileType python nnoremap <buffer> <F10> :exec '!python' shellescape(@%, 1)<cr>
   autocmd FileType python,cpp,c,perl,tcl :IndentGuidesEnable
-  autocmd FileType python,cpp,c,perl,tcli,shell,bash,zsh,vim :ALEEnable
+  "autocmd FileType python,cpp,c,perl,tcli,shell,bash,zsh,vim :ALEEnable
+  autocmd FileType python,cpp,c,perl,tcli,shell,bash,zsh :ALEEnable
   autocmd FileType python,cpp,shell,bash,zsh,vim :TagbarOpen
   "map <F4> :SyntasticToggleMode<CR>
 augroup END
