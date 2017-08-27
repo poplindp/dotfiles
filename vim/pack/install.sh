@@ -47,144 +47,105 @@ function package () {
   fi
 }
 
-(
-set_group staging
-package fatih/vim-go.git &
-package tpope/vim-rhubarb.git &
-package dhruvasagar/vim-table-mode.git &
-wait
-) &
 
 (
-set_group tpope
-# package tpope/vim-dispatch.git &
-# package tpope/vim-jdaddy.git &
-package tpope/vim-fugitive.git &
-package tpope/vim-surround.git &
-package tpope/vim-ragtag.git &
+set_group basic
+#package dietsche/vim-lastplace &
+#package tpope/vim-unimpaired &
+package Lokaltog/vim-easymotion &
+package Xuyuanp/nerdtree-git-plugin &
+package chrisbra/Recover.vim &
+package chrisbra/changesPlugin &
+package chrisbra/vim-diff-enhanced &
+package jeetsukumaran/vim-buffergator &
+package jiangmiao/auto-pairs &
+package junegunn/fzf.vim &
+package mbbill/undotree &
+package pgdouyon/vim-evanesco &
+package ryanoasis/vim-devicons &
+package scrooloose/nerdcommenter &
+package scrooloose/nerdtree &
+package skywind3000/asyncrun.vim &
+package thaerkh/vim-workspace & # or :mksession???
 package tpope/vim-abolish.git &
-package tpope/vim-repeat.git &
-package tpope/vim-commentary.git &
-package tpope/vim-projectionist.git &
-# package tpope/vim-vinegar.git &
+package tpope/vim-repeat &
+package tpope/vim-sensible &
+package tpope/vim-sleuth & # automatic indent (* all other indents could be removed)
 wait
 ) &
 
 (
-set_group python
+set_group programming
+package Valloric/vim-operator-highlight &
 package fisadev/vim-isort &
+package fs111/pydoc.vim &
+package ivanov/vim-ipython &
 package majutsushi/tagbar &
 package nathanaelkane/vim-indent-guides &
 wait
 ) &
 
 (
-set_group snippets
-# Vim-snipmate and dependencies - VimL but buggy
-package MarcWeber/vim-addon-mw-utils.git &
-package tomtom/tlib_vim.git &
-package garbas/vim-snipmate.git &
-# Ultisnips is python but more functional
-package SirVer/ultisnips.git &
-package ajh17/VimCompletesMe.git &
-wait
-) &
-
-(
-set_group tmux
-package christoomey/vim-tmux-navigator.git &
-package keith/tmux.vim &
-#'tmux-plugins/vim-tmux-focus-events'
-#'christoomey/vim-tmux-navigator'
-#
-#'tmux-plugins/vim-tmux'
-wait
-) &
-
-(
-set_group git
-package jreybert/vimagit.git &
-package tpope/vim-fugitive &
-package airblade/vim-gitgutter &
+set_group completion
+#package 'Valloric/YouCompleteMe', { 'do': './install.py' } " Compile it with python2 install.py
+package Shougo/neocomplete &
+package Shougo/neosnippet &
+package Shougo/neosnippet-snippets &
+package honza/vim-snippets &
+package ervandew/supertab &
 wait
 ) &
 
 (
 set_group syntax
-package kchmck/vim-coffee-script.git &
-package tpope/vim-markdown.git &
-package ap/vim-css-color.git &
-package pearofducks/ansible-vim.git &
-package vim-scripts/applescript.vim.git &
-package tmux-plugins/vim-tmux.git &
 package Matt-Deacalion/vim-systemd-syntax.git &
-package salomvary/vim-eslint-compiler.git &
-package hashivim/vim-terraform.git &
+package ap/vim-css-color.git &
+package tmux-plugins/vim-tmux.git &
 package w0rp/ale &
+package chrisbra/vim-zsh &
+package zplug/vim-zplug &
 wait
 ) &
 
+(
+set_group tmux
+package benmills/vimux &
+package christoomey/vim-tmux-navigator.git &
+package keith/tmux.vim &
+package tmux-plugins/vim-tmux-focus-events &
+wait
+) &
 
 (
-set_group colorschemes
-#package altercation/vim-colors-solarized.git &
-package vim-airline/vim-airline.git &
+set_group git
+package airblade/vim-gitgutter &
+package gregsexton/gitv &
+package jreybert/vimagit.git &
+package tpope/vim-fugitive &
+package tpope/vim-rhubarb.git &
+wait
+) &
+
+(
+set_group themes
+package altercation/vim-colors-solarized.git &
+package sjl/badwolf &
+package tomasr/molokai &
 package vim-airline/vim-airline-themes.git &
+package vim-airline/vim-airline.git &
 wait
 ) &
 
 (
-set_group basic
-package chrisbra/changesPlugin &
-package chrisbra/vim-diff-enhanced &
+set_group extras
+package dhruvasagar/vim-table-mode.git &
 wait
 ) &
 
-
-(
-set_group search
-package junegunn/fzf.vim &
-wait
-)
-
-(set_group edition
-package scrooloose/nerdcommenter &
-package scrooloose/nerdtree &
-package Xuyuanp/nerdtree-git-plugin &
-wait
-)
-
 wait
 
-#'tpope/vim-sensible'
-#'Lokaltog/vim-easymotion'
-#'mhinz/vim-startify'
-#'sjl/gundo.vim' ", { 'on': 'GundoToggle' }
-#'ryanoasis/vim-devicons'
-#'jlanzarotta/bufexplorer'
-#'tpope/vim-unimpaired'
-#'whatyouhide/vim-lengthmatters'
-#'jiangmiao/auto-pairs'
-#'junegunn/rainbow_parentheses.vim', { 'on':  'RainbowParentheses' }
-#'pgdouyon/vim-evanesco'
-#'djoshea/vim-autoread'
-#'thaerkh/vim-workspace'
-#'dietsche/vim-lastplace'
-#'mhinz/vim-sayonara', { 'on': 'Sayonara' }
-#
-#'SirVer/ultisnips', { 'for': ['c', 'c++', 'perl', 'tcl', 'python'] }
-#lug 'honza/vim-snippets', { 'for': ['c', 'c++', 'perl', 'tcl', 'python'] } " Snippets are separated from the engine. vim-snippets are required
-#'Valloric/YouCompleteMe', { 'do': './install.py' } " Compile it with python2 install.py
-#'fs111/pydoc.vim', { 'for': 'python' }
-#'python-mode/python-mode', { 'for': 'python' }
-#'Valloric/vim-operator-highlight'
-#'skywind3000/asyncrun.vim'
-#
-#'zplug/vim-zplug'
-#'chrisbra/vim-zsh'
-#'tpope/vim-sleuth'
 
 
 
-# echo "Plugins that havn't been updated by this script:"
+echo "Plugins that havn't been updated by this script:"
 find */*/*/.git -prune -mtime 0.01
