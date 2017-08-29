@@ -79,11 +79,15 @@ set_group programming
 package Valloric/vim-operator-highlight &
 package fisadev/vim-isort &
 package fs111/pydoc.vim &
-package ivanov/vim-ipython &
 package majutsushi/tagbar &
-package nathanaelkane/vim-indent-guides &
 wait
 ) &
+
+(
+set_group_opt programming
+package ivanov/vim-ipython &
+package nathanaelkane/vim-indent-guides &
+)
 
 (
 set_group completion
@@ -101,11 +105,15 @@ set_group syntax
 package Matt-Deacalion/vim-systemd-syntax.git &
 package ap/vim-css-color.git &
 package tmux-plugins/vim-tmux.git &
-package w0rp/ale &
 package chrisbra/vim-zsh &
 package zplug/vim-zplug &
 wait
 ) &
+
+(
+set_group_opt syntax
+package w0rp/ale &
+)
 
 (
 set_group tmux

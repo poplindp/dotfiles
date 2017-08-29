@@ -1,4 +1,4 @@
-" vim:fdm=marker
+" wim:fdm=marker
 set nocompatible
 filetype plugin indent on
 
@@ -305,10 +305,10 @@ augroup fugitive
 augroup END
 " }}}
 
-" vim-indent-guides {{{
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-" }}}
+"  vim-indent-guides {{{
+"let g:indent_guides_start_level = 2
+"let g:indent_guides_guide_size = 1
+"" }}}
 
 "" vim-lastplace {{{
 "let g:lastplace_ignore = "gitcommit,svn"
@@ -399,9 +399,8 @@ augroup programming_files
   autocmd FileType python,cpp,c,perl,tcl,shell,bash,zsh nmap <buffer> <F6> :ALEToggle<CR>
   autocmd FileType python,cpp,c,perl,tcl nnoremap <F10> :call <SID>compile_and_run()<CR>
   "autocmd FileType python nnoremap <buffer> <F10> :exec '!python' shellescape(@%, 1)<cr>
-  autocmd FileType python,cpp,c,perl,tcl :IndentGuidesEnable
-  "autocmd FileType python,cpp,c,perl,tcli,shell,bash,zsh,vim :ALEEnable
-  autocmd FileType python,cpp,c,perl,tcli,shell,bash,zsh :ALEEnable
+  "autocmd FileType python,cpp,c,perl,tcl :IndentGuidesEnable
+  autocmd FileType python,cpp,c,perl,tcl,shell,bash,zsh,vim :ALEEnable
   autocmd FileType python,cpp,shell,bash,zsh,vim :TagbarOpen
   "map <F4> :SyntasticToggleMode<CR>
 augroup END
