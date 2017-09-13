@@ -128,6 +128,7 @@ endif
 " Include - as part of a word definition. For example, viw will select the
 " entire word of 'this-is-hyphened'
 set iskeyword+=-
+set noequalalways  " avoids that toggling windows resize others (maybe not great)
 
 " PLUGINS {{{
 
@@ -197,9 +198,14 @@ else
 endif
 " }}}
 
-" nerdtree / newtr {{{
+" nerdtree / newtr / tagbar {{{
 let g:NERDTreeWinPos = 'right'
 let g:NERDTreeDirArrows=1
+let g:buffergator_viewport_split_policy = 'B'
+let g:buffergator_autoupdate=1
+let g:buffergator_hsplit_size=6
+let g:tagbar_width = 30
+let g:tagbar_autofocus = 1
 "autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
@@ -400,7 +406,7 @@ augroup programming_files
   autocmd FileType python,cpp,c,perl,tcl nnoremap <F10> :call <SID>compile_and_run()<CR>
   "autocmd FileType python nnoremap <buffer> <F10> :exec '!python' shellescape(@%, 1)<cr>
   "autocmd FileType python,cpp,c,perl,tcl :IndentGuidesEnable
-  autocmd FileType python,cpp,c,perl,tcl,shell,bash,zsh,vim :ALEEnable
+  autocmd FileType python,cpp,c,perl,tcl,shell,bash,zsh,vim packadd ale "| ALEEnable
   autocmd FileType python,cpp,shell,bash,zsh,vim :TagbarOpen
   "map <F4> :SyntasticToggleMode<CR>
 augroup END
