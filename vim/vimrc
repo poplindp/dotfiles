@@ -207,8 +207,11 @@ let g:buffergator_autoupdate=1
 let g:buffergator_hsplit_size=6
 let g:tagbar_width = 30
 let g:tagbar_autofocus = 1
-"autocmd vimenter * if !argc() | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+augroup nerdtree
+  autocmd!
+  "autocmd vimenter * if !argc() | NERDTree | endif
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+augroup END
 
 "" nerdtree-like newtr
 "let g:netrw_banner = 0
@@ -235,38 +238,6 @@ let g:NERDTreeIndicatormapCustom = {
       \ 'Ignored'   : '☒',
       \ 'Unknown'   : '?'
       \ }
-" }}}
-
-" YouCompleteMe {{{
-"augroup load_us_ycm
-"	autocmd!
-"	autocmd InsertEnter * call plug#load('ultisnips', 'vim-snippets', 'YouCompleteMe')
-"		\| call youcompleteme#Enable() | autocmd! load_us_ycm
-"augroup END
-""let g:ycm_server_python_interpreter = "/usr/bin/python2"
-"let g:ycm_server_python_interpreter = "/usr/bin/python"
-"let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-"let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
-"let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
-""let g:ycm_server_keep_logfiles = 1
-""let g:ycm_server_log_level = 'debug'
-"" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<tab>"
-"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-"" If you want :UltiSnipsEdit to split your window.
-"let g:UltiSnipsEditSplit="vertical"
-" }}}
-
-" syntastic {{{
-""set statusline+=%#warningmsg#
-""set statusline+=%{SyntasticStatuslineFlag()}
-""set statusline+=%*
-""let g:syntastic_python_python_exec = 'python3'
-""let g:syntastic_always_populate_loc_list = 1
-""let g:syntastic_auto_loc_list = 1
-""let g:syntastic_check_on_open = 1
-""let g:syntastic_check_on_wq = 0
 " }}}
 
 " ale (replace syntastic and flake9 in vim8) {{{
@@ -404,6 +375,7 @@ endfunction
 
 " Python files
 augroup programming_files
+  autocmd!
   "autocmd FileType python noremap <buffer> <F3> :call Flake8()<CR>
   autocmd FileType python,cpp,c,perl,tcl,shell,bash,zsh nnoremap <buffer> <F6> :ALEToggle<CR>
   autocmd FileType python,cpp,c,perl,tcl nnoremap <F10> :call <SID>compile_and_run()<CR>
@@ -411,7 +383,6 @@ augroup programming_files
   "autocmd FileType python,cpp,c,perl,tcl :IndentGuidesEnable
   autocmd FileType python,cpp,c,perl,tcl,shell,bash,zsh,vim packadd ale "| ALEEnable
   "autocmd FileType python,cpp,shell,bash,zsh,vim :TagbarOpen "issue fugitive?
-  "noremap <F4> :SyntasticToggleMode<CR>
 augroup END
 
 augroup text_files
