@@ -410,7 +410,7 @@ augroup programming_files
   "autocmd FileType python nnoremap <buffer> <F10> :exec '!python' shellescape(@%, 1)<cr>
   "autocmd FileType python,cpp,c,perl,tcl :IndentGuidesEnable
   autocmd FileType python,cpp,c,perl,tcl,shell,bash,zsh,vim packadd ale "| ALEEnable
-  autocmd FileType python,cpp,shell,bash,zsh,vim :TagbarOpen
+  "autocmd FileType python,cpp,shell,bash,zsh,vim :TagbarOpen "issue fugitive?
   "noremap <F4> :SyntasticToggleMode<CR>
 augroup END
 
