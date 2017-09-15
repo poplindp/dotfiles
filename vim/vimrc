@@ -1,5 +1,5 @@
 " wim:fdm=marker
-set nocompatible
+set nocompatible "explicitely required by vim-fugitive
 filetype plugin indent on
 
 let g:mapleader = ','  "sets up the leader for all maps
@@ -128,25 +128,25 @@ endif
 " Include - as part of a word definition. For example, viw will select the
 " entire word of 'this-is-hyphened'
 set iskeyword+=-
-set noequalalways  " avoids that toggling windows resize others (maybe not great)
+"set noequalalways  " avoids that toggling windows resize others (maybe not great)
 
 " PLUGINS {{{
 
 " neocomplete / neosnippets {{{
 " Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+" Note: It must be "inoremap" and "snoremap".  It uses <Plug> mappings.
+inoremap <C-k>     <Plug>(neosnippet_expand_or_jump)
+snoremap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xnoremap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"imap <expr><TAB>
+" Note: It must be "inoremap" and "snoremap".  It uses <Plug> mappings.
+inoremap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"inoremap <expr><TAB>
 " \ pumvisible() ? "\<C-n>" :
 " \ neosnippet#expandable_or_jumpable() ?
 " \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+snoremap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " For conceal markers.
@@ -164,22 +164,22 @@ let g:neosnippet#snippets_directory='~/.vim/pack/completion/start/vim-snippets/U
 " }}}
 
 " vim-easymotion {{{
-"map <Tab> <Plug>(easymotion-prefix)
+"noremap <Tab> <Plug>(easymotion-prefix)
 
 "" <Leader>f{char} to move to {char}
-"map  <Leader>f <Plug>(easymotion-bd-f)
-"nmap <Leader>f <Plug>(easymotion-overwin-f)
+"noremap  <Leader>f <Plug>(easymotion-bd-f)
+"nnoremap <Leader>f <Plug>(easymotion-overwin-f)
 
 "" s{char}{char} to move to {char}{char}
-"nmap <Leader> s <Plug>(easymotion-overwin-f2)
+"nnoremap <Leader> s <Plug>(easymotion-overwin-f2)
 
 "" Move to line
-"map <Leader>L <Plug>(easymotion-bd-jk)
-"nmap <Leader>L <Plug>(easymotion-overwin-line)
+"noremap <Leader>L <Plug>(easymotion-bd-jk)
+"nnoremap <Leader>L <Plug>(easymotion-overwin-line)
 
 "" Move to word
-"map  <Leader>w <Plug>(easymotion-bd-w)
-"nmap <Leader>w <Plug>(easymotion-overwin-w)
+"noremap  <Leader>w <Plug>(easymotion-bd-w)
+"nnoremap <Leader>w <Plug>(easymotion-overwin-w)
 " }}}
 
 " vim-colors-solarized {{{
@@ -201,6 +201,7 @@ endif
 " nerdtree / newtr / tagbar {{{
 let g:NERDTreeWinPos = 'right'
 let g:NERDTreeDirArrows=1
+let g:NERDTreeWinSize=30
 let g:buffergator_viewport_split_policy = 'B'
 let g:buffergator_autoupdate=1
 let g:buffergator_hsplit_size=6
@@ -222,7 +223,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " }}}
 
 " vim-devicons {{{
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeIndicatormapCustom = {
       \ 'Modified'  : '✹',
       \ 'Staged'    : '✚',
       \ 'Untracked' : '✭',
@@ -272,8 +273,8 @@ let g:NERDTreeIndicatorMapCustom = {
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nnoremap <silent> <C-k> <Plug>(ale_previous_wrap)
+nnoremap <silent> <C-j> <Plug>(ale_next_wrap)
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
 " After this: ALEFix will only try and fix your JS code with ESLint.
@@ -300,6 +301,9 @@ let g:ale_completion_enabled = 0
 
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
+
+nnoremap <silent> <C-k> <Plug>(ale_previous_wrap)
+nnoremap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " }}}
 
@@ -394,43 +398,42 @@ function! s:compile_and_run()
 endfunction
 
 
-
 "
 " FILES
 "
 
 " Python files
 augroup programming_files
-  "autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
-  autocmd FileType python,cpp,c,perl,tcl,shell,bash,zsh nmap <buffer> <F6> :ALEToggle<CR>
+  "autocmd FileType python noremap <buffer> <F3> :call Flake8()<CR>
+  autocmd FileType python,cpp,c,perl,tcl,shell,bash,zsh nnoremap <buffer> <F6> :ALEToggle<CR>
   autocmd FileType python,cpp,c,perl,tcl nnoremap <F10> :call <SID>compile_and_run()<CR>
   "autocmd FileType python nnoremap <buffer> <F10> :exec '!python' shellescape(@%, 1)<cr>
   "autocmd FileType python,cpp,c,perl,tcl :IndentGuidesEnable
   autocmd FileType python,cpp,c,perl,tcl,shell,bash,zsh,vim packadd ale "| ALEEnable
   autocmd FileType python,cpp,shell,bash,zsh,vim :TagbarOpen
-  "map <F4> :SyntasticToggleMode<CR>
+  "noremap <F4> :SyntasticToggleMode<CR>
 augroup END
 
 augroup text_files
   autocmd!
-  autocmd FileType tex,latex,context,plaintex,text nmap <silent> <buffer> <F6> :call ToggleSpell()<CR>
-  "nmap <silent> <F6> :call ToggleSpell()<CR>
+  autocmd FileType tex,latex,context,plaintex,text nnoremap <silent> <buffer> <F6> :call ToggleSpell()<CR>
+  "nnoremap <silent> <F6> :call ToggleSpell()<CR>
 augroup END
 
 "
-" Mappings
+" mappings
 "
 " :IndentGuidesToggle
 
 "call togglebg#map("<F2>") " only useful with solarized scheme
 nnoremap <silent> <F3> :GundoToggle<CR>
-map <silent> <F4> :NERDTreeToggle<CR>
-map <silent> <F5> :ToggleBufExplorer<CR>
-"map <silent> <F6> USED by Spell, Syntax
-map <silent> <F7> :tabp<CR>
-map <silent> <F8> :tabn<CR>
-nmap <F9> :TagbarToggle<CR>
-"map <silent> <F10> USED by exec
+noremap <silent> <F4> :NERDTreeToggle<CR>
+noremap <silent> <F5> :ToggleBufExplorer<CR>
+"noremap <silent> <F6> USED by Spell, Syntax
+noremap <silent> <F7> :tabp<CR>
+noremap <silent> <F8> :tabn<CR>
+nnoremap <F9> :TagbarToggle<CR>
+"noremap <silent> <F10> USED by exec
 set pastetoggle=<F12>
 
 
