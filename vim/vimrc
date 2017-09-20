@@ -159,7 +159,7 @@ let g:neosnippet#enable_snipmate_compatibility = 0
 
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/pack/completion/start/vim-snippets/snippets/'
-let g:neosnippet#snippets_directory='~/.vim/pack/completion/start/vim-snippets/UltiSnips/'
+"let g:neosnippet#snippets_directory='~/.vim/pack/completion/start/vim-snippets/UltiSnips/'
 
 " }}}
 
