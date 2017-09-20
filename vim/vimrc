@@ -359,7 +359,7 @@ function! ToggleSpell()
   else
     execute 'setlocal spell spelllang='.get(g:myLangList, b:myLang)
   endif
-  echo 'spell checking language:' g:myLangList[b:myLang]
+  "echo 'spell checking language:' g:myLangList[b:myLang]
 endfunction
 
 " autoreload vimrc
@@ -416,7 +416,7 @@ augroup END
 
 augroup text_files
   autocmd!
-  autocmd FileType tex,latex,context,plaintex,text nnoremap <silent> <buffer> <F6> :call ToggleSpell()<CR>
+  autocmd FileType tex,latex,context,plaintex,text,markdown nnoremap <silent> <buffer> <F6> :call ToggleSpell()<CR>
   "nnoremap <silent> <F6> :call ToggleSpell()<CR>
 augroup END
 
