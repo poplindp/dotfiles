@@ -1,14 +1,13 @@
-# - defaults:
-#   link:
-#     relink: true
-#
-# - clean: ['~']
-#
-# - link:
-#   ~/.dotfiles: ''
-#   ~/.tmux.conf: tmux.conf
-#   ~/.vim: vim
-#   ~/.vimrc: vimrc
-#
-# - shell:
-  # - [git submodule update --init --recursive, Installing submodules]
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.config/termite/config:
+      create: true
+      path: config/termite/config
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
