@@ -400,6 +400,7 @@ augroup programming_files
   "autocmd FileType python,cpp,c,perl,tcl :IndentGuidesEnable
   autocmd FileType python,cpp,c,perl,tcl,shell,bash,zsh,vim packadd ale "| ALEEnable
   "autocmd FileType python,cpp,shell,bash,zsh,vim :TagbarOpen "issue fugitive?
+  "autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 augroup END
 
 augroup text_files
