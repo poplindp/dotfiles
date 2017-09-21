@@ -9,5 +9,9 @@
       create: true
       path: config/termite/config
 
+    ~/.tmux: tmux
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.tmux.conf.local: tmux/tmux.conf.local
+
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
