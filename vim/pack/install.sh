@@ -106,6 +106,7 @@ package Matt-Deacalion/vim-systemd-syntax.git &
 package ap/vim-css-color.git &
 package tmux-plugins/vim-tmux.git &
 package chrisbra/vim-zsh &
+package tbastos/vim-lua &
 package zplug/vim-zplug &
 wait
 ) &
