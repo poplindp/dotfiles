@@ -5,6 +5,11 @@
 - clean: ['~']
 
 - link:
+    ~/.config/awesome:
+      create: true
+      path: config/awesome/awesome-copycats
+    ~/.config/awesome/rc.lua: config/awesome/awesome-copycats
+
     ~/.config/termite/config:
       create: true
       path: config/termite/config
