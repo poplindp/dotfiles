@@ -8,7 +8,7 @@
     ~/.config/awesome:
       create: true
       path: config/awesome/awesome-copycats
-    ~/.config/awesome/rc.lua: config/awesome/awesome-copycats
+    ~/.config/awesome/rc.lua: config/awesome/rc.lua
 
     ~/.config/termite/config:
       create: true
