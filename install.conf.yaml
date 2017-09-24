@@ -1,14 +1,33 @@
-# - defaults:
-#   link:
-#     relink: true
-#
-# - clean: ['~']
-#
-# - link:
-#   ~/.dotfiles: ''
-#   ~/.tmux.conf: tmux.conf
-#   ~/.vim: vim
-#   ~/.vimrc: vimrc
-#
-# - shell:
-  # - [git submodule update --init --recursive, Installing submodules]
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.config/awesome:
+      create: true
+      path: config/awesome/awesome-copycats
+    ~/.config/awesome/rc.lua: config/awesome/rc.lua
+
+    ~/.config/termite/config:
+      create: true
+      path: config/termite/config
+
+    ~/.tmux: tmux
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.tmux.conf.local: tmux/tmux.conf.local
+
+    ~/.tmuxinator: tmuxinator
+
+    ~/.zsh: zsh
+    ~/.zshrc: zsh/zshrc
+    ~/.zprofile: zsh/zprofile
+
+    ~/.Xmodmap: Xmodmap
+    ~/.Xresources: Xresources
+
+    ~/.inputrc: inputrc
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]

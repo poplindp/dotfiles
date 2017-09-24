@@ -53,7 +53,6 @@ set_group basic
 #package dietsche/vim-lastplace &
 #package tpope/vim-unimpaired &
 package Lokaltog/vim-easymotion &
-package Xuyuanp/nerdtree-git-plugin &
 package chrisbra/Recover.vim &
 package chrisbra/changesPlugin &
 package chrisbra/vim-diff-enhanced &
@@ -106,6 +105,7 @@ package Matt-Deacalion/vim-systemd-syntax.git &
 package ap/vim-css-color.git &
 package tmux-plugins/vim-tmux.git &
 package chrisbra/vim-zsh &
+package tbastos/vim-lua &
 package zplug/vim-zplug &
 wait
 ) &
@@ -131,6 +131,7 @@ package gregsexton/gitv &
 package jreybert/vimagit.git &
 package tpope/vim-fugitive &
 package tpope/vim-rhubarb.git &
+package Xuyuanp/nerdtree-git-plugin &
 wait
 ) &
 
