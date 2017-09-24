@@ -132,6 +132,12 @@ set iskeyword+=-
 
 " PLUGINS {{{
 
+" table-mode {{{
+" To get ReST-compatible tables (useful with pandoc)
+let g:table_mode_corner_corner='+'
+let g:table_mode_header_fillchar='='
+" }}}
+
 " neocomplete / neosnippets {{{
 " Plugin key-mappings.
 " Note: It must be "inoremap" and "snoremap".  It uses <Plug> mappings.
