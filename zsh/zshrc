@@ -38,11 +38,11 @@ zplug "plugins/archlinux", from:oh-my-zsh, if:"[[ -f /etc/arch-release ]]"
 
 zplug "lib/history", from:oh-my-zsh
 zplug "zdharma/history-search-multi-word"
-zplug "zsh-users/zsh-history-substring-search", defer:3
-if zplug check 'zsh-users/zsh-history-substring-search'; then
-  bindkey -M vicmd 'k' history-substring-search-up
-  bindkey -M vicmd 'j' history-substring-search-down
-fi
+# zplug "zsh-users/zsh-history-substring-search", defer:3
+# if zplug check 'zsh-users/zsh-history-substring-search'; then
+#   bindkey -M vicmd 'k' history-substring-search-up
+#   bindkey -M vicmd 'j' history-substring-search-down
+# fi
 
 zplug "b4b4r07/zsh-vimode-visual", use:"*.zsh", defer:3
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
@@ -57,13 +57,10 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse --border --inline-info'
 zplug "k4rthik/git-cal", as:command
 zplug "plugins/git",   from:oh-my-zsh
 
-
-#zplug "tmuxinator/tmuxinator", use:"completion/*.zsh"
 zplug "/usr/lib/ruby/gems/2.4.0/gems/tmuxinator-0.9.0/completion/", from:local
 
-
 # To Check
-zplug "Jxck/dotfiles", as:command, use:"bin/{histuniq,color}"
+#zplug "Jxck/dotfiles", as:command, use:"bin/{histuniq,color}"
 #zplug "unixorn/warhol.plugin.zsh", use:"*.zsh"
 #zplug "zpm-zsh/dropbox"
 
@@ -74,8 +71,6 @@ zplug "MichaelAquilina/zsh-you-should-use"
 zplug "~/.zsh", from:local, if:"[[ -d $HOME/.zsh ]]"
 
 # Load theme file
-#zplug 'dracula/zsh', as:theme
-#zplug 'eendroroy/alien', as:theme
 #zplug "sindresorhus/pure", use:"*.zsh", as:theme
 zplug 'denysdovhan/spaceship-zsh-theme', as:theme
 
