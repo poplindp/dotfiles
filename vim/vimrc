@@ -1,6 +1,5 @@
 " wim:fdm=marker
 set nocompatible "explicitely required by vim-fugitive
-filetype plugin indent on
 
 let g:mapleader = ','  "sets up the leader for all maps
 let g:maplocalleader = '\\' "a prefix for mappings that only take effect for certain types of files
@@ -42,7 +41,6 @@ let g:airline_powerline_fonts = 1
 " Formatting and indentation {{{
 " Use spaces instead of tabs
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-set tabstop=2 sw=2 expandtab
 set smarttab
 filetype indent plugin on
 set autoindent
@@ -407,6 +405,7 @@ augroup programming_files
   autocmd FileType python,cpp,c,perl,tcl,shell,bash,zsh,vim packadd ale "| ALEEnable
   "autocmd FileType python,cpp,shell,bash,zsh,vim :TagbarOpen "issue fugitive?
   "autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+  au FileType python setl ts=4 sts=4 sw=4 et
 augroup END
 
 augroup text_files
