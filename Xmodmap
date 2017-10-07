@@ -3,25 +3,12 @@
 !
 
 clear lock
-remove control = Control_L
+clear control
+keycode 66 = Control_L
+add control = Control_L Control_R
 
-keycode 0x42 = Control_L
+!keycode 0x42 = Control_L
 !keycode 0x42 = Caps_Lock
 
 !maps CapsLock to ScrollLock just in case!
 keycode 78=Caps_Lock
-! dont do the sym, just map into Contro_L
-!keysym Caps_Lock = Control_L
-!
-add control = Control_L
-
-
-
-!!! OLD.  Gives errors "bad keysym in..." since once Caps_Lock is removed
-!!!       there is no more definition for it!.  Using the code (0x42) for
-!!!       caps_locks make the trick
-!
-!remove Lock = Caps_Lock
-!remove Control = Control_L
-!keysym Caps_Lock = Control_L
-!add Control = Control_L
