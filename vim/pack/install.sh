@@ -69,7 +69,7 @@ package thaerkh/vim-workspace & # or :mksession???
 package tpope/vim-abolish.git &
 package tpope/vim-repeat &
 package tpope/vim-sensible &
-package tpope/vim-sleuth & # automatic indent (* all other indents could be removed)
+#package tpope/vim-sleuth & # automatic indent (* all other indents could be removed)
 wait
 ) &
 
