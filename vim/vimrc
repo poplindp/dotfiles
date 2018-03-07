@@ -205,11 +205,11 @@ endif
 " nerdtree / newtr / tagbar {{{
 let g:NERDTreeWinPos = 'right'
 let g:NERDTreeDirArrows=1
-let g:NERDTreeWinSize=30
+let g:NERDTreeWinSize=40
 let g:buffergator_viewport_split_policy = 'B'
 let g:buffergator_autoupdate=1
 let g:buffergator_hsplit_size=6
-let g:tagbar_width = 30
+let g:tagbar_width = 40
 let g:tagbar_autofocus = 1
 augroup nerdtree
   autocmd!
