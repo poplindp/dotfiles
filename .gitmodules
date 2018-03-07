@@ -12,4 +12,4 @@
 	url = https://github.com/tmux-plugins/tpm
 [submodule "config/awesome/awesome-copycats"]
 	path = config/awesome/awesome-copycats
-	url = https://github.com/copycat-killer/awesome-copycats
+	url = https://github.com/lcpz/awesome-copycats
