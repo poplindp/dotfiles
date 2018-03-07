@@ -57,7 +57,7 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse --border --inline-info'
 zplug "k4rthik/git-cal", as:command
 zplug "plugins/git",   from:oh-my-zsh
 
-zplug "/usr/lib/ruby/gems/2.4.0/gems/tmuxinator-0.9.0/completion/", from:local
+zplug "/usr/lib/ruby/gems/2.5.0/gems/tmuxinator-0.10.1/completion/", from:local
 
 # To Check
 #zplug "Jxck/dotfiles", as:command, use:"bin/{histuniq,color}"
@@ -104,6 +104,7 @@ SAVEHIST=30000
 
 PATH=${ZPLUG_HOME}/bin:${HOME}/.local/bin:${PATH}
 PYTHONPATH=${PYTHONPATH}:$HOME/.local/lib/python/site-packages:$HOME/.local/lib/python2/site-packages
+PYTHONPATH=/usr/lib/python3.6/site-packages:${PYTHONPATH}
 LD_LIBRARY_PATH=${HOME}/.local/lib:${LD_LIBRARY_PATH}
 export PATH
 export PYTHONPATH
