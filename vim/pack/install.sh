@@ -84,6 +84,7 @@ wait
 
 (
 set_group_opt programming
+chrisbra/csv.vim &
 package ivanov/vim-ipython &
 package nathanaelkane/vim-indent-guides &
 )
