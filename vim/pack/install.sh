@@ -84,7 +84,6 @@ wait
 
 (
 set_group_opt programming
-chrisbra/csv.vim &
 package ivanov/vim-ipython &
 package nathanaelkane/vim-indent-guides &
 )
@@ -108,6 +107,7 @@ package tmux-plugins/vim-tmux.git &
 package chrisbra/vim-zsh &
 package tbastos/vim-lua &
 package zplug/vim-zplug &
+package chrisbra/csv.vim &
 wait
 ) &
 
